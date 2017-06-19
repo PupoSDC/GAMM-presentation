@@ -1,0 +1,34 @@
+body {
+  background: #FFF;
+  background-color: #FFF; }
+
+  .reveal .footer {
+  position: absolute;
+  bottom: 0em;
+  left: 0em;
+  text-align: right;
+  width:  100%;
+  height:   150px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reveal .footer-left img{
+    padding-top: 10px;
+    height:   130px;
+}
+
+.reveal .footer .footer-right {
+  height:   150px;
+  font-size: 50px;
+}
+
+.reveal .footer .footer-right div{
+  padding-top: 50px;
+  margin-right: 50px;
+}
+
+.reveal .progress {
+  bottom:   150px;
+  font-size: 50px;
+}
