@@ -3,8 +3,16 @@ body {
   background-color:   #FFF;
 }
 
-.hide {
-  display:            none !important;
+#cover-image {
+  border:             0px;
+  box-shadow:         0 0 0;
+  max-height:         100px;
+}
+
+#cover-rule {
+  height: 4px;
+  background-color: #009DE0;
+  color:  #009DE0;
 }
 
 #header {
@@ -83,11 +91,4 @@ body {
 
 .reveal .progress {
   bottom:             10%;
-}
-
-.reveal .animations {
-  width:       80%;
-  height:      80%;
-  margin:      auto;
-  margin-top:  10%;
 }
