@@ -53,7 +53,7 @@ body {
 }
 
 #footer-left img {
-  object-fit: contain;
+  object-fit:         contain;
   width:              auto;
   height:             80%;
 }
@@ -66,12 +66,12 @@ body {
   align-content:      center;
   flex-direction:     column;
   padding-right:      2%;
-  width:              30%;
+  width:              50%;
 }
 
 #footer-right #autor {
   font-size:          40px;
-  font-size:          3.8vh;
+  font-size:          3.2vh;
   font-weight:        700;
   height:             100%;
   display:            flex;
