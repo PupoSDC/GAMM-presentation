@@ -14,13 +14,13 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
-		<link rel="stylesheet" href="lib/css/moon.css">
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/reveal.css"                >
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme" >
+		<link rel="stylesheet" href="css/main.css"                  >
 
-		<script src="lib/js/head.min.js" ></script>
-		<script src="js/reveal.js"       ></script>
+		<script src="lib/js/head.min.js" defer></script>
+		<script src="js/reveal.js"       defer></script>
+		<script src="js/main.js"         defer></script>
 
 	</head>
 
@@ -28,7 +28,10 @@
 
 		<div class="reveal">
 
-			<div class='footer'>
+			<div id="header" >
+				<div class="header-left"> Hello </div>
+			</div>
+			<div id="footer">
 				<div class="footer-left">
 			  		<img src="img/logo.jpeg">
 			  	</div>
@@ -38,14 +41,22 @@
 			  	</div>
 			</div>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
+					<h2>Hips</h2>
+					<h4>Hierarchical Parcel Swapping</h4>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						Pedro Pupo Sá da Costa</br>
+						<small> 
+							Heiko Schmidt, Moritz Fragner, Simon Schöps
+						</small>
+						</br>
+						<small class="datetoday"></small>
+						</bt>
+						<small> 
+							Lehrstuhl Numerische Strömungs- und Gasdynamik 
+						</small>
 					</p>
 				</section>
 
@@ -70,28 +81,6 @@
 			</div>
 
 		</div>
-
-
-		<script defer>
-
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: false,
-				progress: true,
-				history: true,
-				center: true,
-
-				transition: 'none', // none/fade/slide/convex/concave/zoom
-
-				math: { config: 'TeX-AMS_HTML-full' 	},
-
-				dependencies: [
-					{ src: 'lib/js/classList.js' },
-					{ src: 'plugin/math/math.js', async: true }
-				]
-			});
-
-		</script>
 
 	</body>
 </html>
