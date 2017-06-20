@@ -18,6 +18,10 @@ Reveal.initialize({
 	]
 });
 
+Reveal.addEventListener(        'ready',   toggleHeaderAndFooter );
+Reveal.addEventListener( 'slidechanged',   toggleHeaderAndFooter );
+Reveal.addEventListener( 'overviewshown',  toggleHeaderAndFooter );
+Reveal.addEventListener( 'overviewhidden', toggleHeaderAndFooter );
 
 function fillDayToday(){
 	var  t = document.getElementsByClassName("datetoday");
@@ -34,4 +38,19 @@ function today(){
 
 	return d.getDate() + " of " + m[d.getMonth()] + ", " + d.getFullYear();
 }
+
+function toggleHeaderAndFooter(){
+	var index = Reveal.getIndices().h;
+	var over  = Reveal.isOverview();
+	if( index == 0 || index == Reveal.getTotalSlides() - 1 || over ){
+		$('#header').hide();
+		$('#footer').hide();
+		$('.progress').hide();
+	} else {
+		$('#header').show();
+		$('#footer').show();
+		$('.progress').show();
+	}
+}
+
 
