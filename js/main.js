@@ -8,6 +8,9 @@ Reveal.initialize({
 
 	transition: 'none', // none/fade/slide/convex/concave/zoom
 
+	// Factor of the display size that should remain empty around the content
+	margin: 0.2,
+
 	math: {
 		config: 'TeX-AMS_HTML-full'
 	},
