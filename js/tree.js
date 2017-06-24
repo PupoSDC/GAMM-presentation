@@ -11,6 +11,7 @@ var tree = {
     self:             this,
 
     clickedNode:      null,
+    clickedGP:        null,
 
     initialise: function(id,number_of_levels,percentage,values){
         this.container         = document.getElementById(id);
@@ -106,27 +107,55 @@ var tree = {
         });
 
         var self = this;
-        if( node.parent != null ){
-            node.form.click( function(e){
-                self.nodeClicked( node );
-            });
-        }
+
+        node.form.click( function(e){
+            self.nodeClicked( node );
+        });
 
         return node.group;
     },
 
     nodeClicked(node){
 
-        if( this.clickedNode == null ){
+        if( this.clickedGP == null && node.left != null && node.left.left != null ){
+            // Select grandpa
+            node.form.attr({ stroke: "red" }); 
+            this.clickedGP = node;
+            return;
+        }
+        if( node == this.clickedGP ){
+            // unselect granpa if double click!
+            node.form.attr({ stroke: "#009DE0" }); 
+            if( this.clickedNode != null ){  
+                this.clickedNode.form.attr( { stroke: "#009DE0" } );
+                this.clickedNode = null;
+            }
+            this.clickedGP = null;
+            return;
+        }
+        if( this.clickedNode == null && node.parent.parent == this.clickedGP ){
+            // Select first node
             node.form.attr({ stroke: "#17253C" });
             this.clickedNode = node;
-        } else if ( this.clickedNode == node ){
+            return;
+        } 
+        if ( this.clickedNode == node ){
+            // unselect first node
             node.form.attr({ stroke: '#009DE0' });
             this.clickedNode = null;
-        }  else {
+            return;
+        }  
+        if ( node.parent.parent == this.clickedGP ){
+            node.form.attr({ stroke: '#009DE0' });
             node.form.attr({ stroke:  "#17253C" });
-            this.moveTwoBranches(node,this.clickedNode);
-            this.clickedNode = null;
+            var self = this;
+            this.moveTwoBranches(node,this.clickedNode,function(){
+               node.form.attr(             { stroke: "#009DE0" } );
+               self.clickedNode.form.attr( { stroke: "#009DE0" } );
+               self.clickedGP.form.attr(   { stroke: "#009DE0" } );
+               self.clickedNode = null;
+               self.clickedGP   = null; 
+            });
         }
     },
 
@@ -141,15 +170,9 @@ var tree = {
         }
     },
 
-    moveTwoBranches(gp1,gp2){
+    moveTwoBranches(gp1,gp2,callback){
         var c1 = this.getCenterOfNode(gp1.form.node);
         var c2 = this.getCenterOfNode(gp2.form.node);
-
-        if( c1.x != c2.x || c1.y == c2.y ){ 
-            gp1.form.attr({ stroke:  '#009DE0' });
-            gp2.form.attr({ stroke:  '#009DE0' });
-            return; 
-        }
         var t1 = gp1.group.transform().localMatrix.f;
         var t2 = gp2.group.transform().localMatrix.f;
         var v1 = this.getMovedValues(gp1);
@@ -160,7 +183,7 @@ var tree = {
         gp1.group.animate({ 
             transform: 't0,' + (c2.y - c1.y + t1 )  
             }, 1000, function(){
-                gp1.form.attr({ stroke:  '#009DE0' });
+                callback();
                 gp1.group.transform('t0,0');
 
                 for( var i = 0; i < v1.length; i++ ){
