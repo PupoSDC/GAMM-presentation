@@ -1,3 +1,10 @@
+// Creete tree animations
+var tree1 = makeTree("treeOne",[0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1] );
+
+var tree2 = makeTree("treeTwo",[0,0.05,0.1,0.2,0.4,0.5,0.5,0.5,0.5,0.5,0.5,0.5,
+	0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.4,0.2,0.1,
+	0.05,0]).setUpTimeAdvancement(0.1).setUpBC();
+
 
 // Configure Reveal
 Reveal.initialize({
@@ -18,7 +25,10 @@ Reveal.initialize({
 	dependencies: [
 		{ src: 'lib/js/classList.js' },
 		{ src: 'plugin/math/math.js' },
-	]
+	],
+	keyboard: {
+	    13: tree2.play
+	}
 });
 
 Reveal.addEventListener( 'slidechanged',   toggleHeaderAndFooter );
@@ -60,5 +70,6 @@ function toggleHeaderAndFooter(){
 	}
 }
 
-// Creete tree animation
-makeTree("svgOne",[0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1] );
+
+
+

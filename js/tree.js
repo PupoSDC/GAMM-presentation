@@ -8,16 +8,29 @@ var makeTree = function(id,values){
     var width             = 960;
     var clickedNode       = null;
     var clickedGP         = null;
+    var nodecollection    = [];
+    var setinterval       = null;
 
     var dadnode = {
         x        : width  / (number_of_levels + 2),
         y        : height / 2,
-        r        : 12,
+        r        : 24,
         left     : null,
         right    : null,
         leftleg  : null,
         rightleg : null,
         id       : "node_0"
+    }
+
+    function resetSelectionProcedure(){
+        if( clickedNode != null ){
+            clickedNode.form.attr( { stroke: "#009DE0" } );
+            clickedNode = null;
+        }
+        if( clickedGP != null ){
+            clickedGP.form.attr( { stroke: "#009DE0" } );
+            clickedGP = null; 
+        }           
     }
 
     function makeNode(parent,level,right){
@@ -30,7 +43,7 @@ var makeTree = function(id,values){
         var node = {
             x        : width * ( level + 1 ) / ( number_of_levels + 2 ) * 0.8,
             y        : parent.y + hd,
-            r        : 12,
+            r        : 24 / level,
             parent   : parent,
             left     : null,
             right    : null,
@@ -61,7 +74,7 @@ var makeTree = function(id,values){
                 .attr({ stroke: "#17253C", })
                 .appendTo( node.group );
 
-            // Draw nodes recusivel and append to group
+            // Draw nodes recusively and append to group
             printTree(  node.left ).appendTo( node.group );
             printTree( node.right ).appendTo( node.group );
 
@@ -72,7 +85,7 @@ var makeTree = function(id,values){
             node.value = snap.rect( 
                 width * 0.7,
                 domain.length * height / n_values,
-                width * 0.3,
+                width * 0.29 * values[domain.length] + 1,
                 height / n_values
             ).attr({
                 fill:       "#009DE0",
@@ -93,54 +106,46 @@ var makeTree = function(id,values){
                             strokeWidth: 3,
                             id:          node.id
                         });
+        nodecollection.push(node);
 
-        node.form.click( function(e){
-            nodeClicked( node );
-        });
+        node.form.click( function(e){ nodeClicked( node ); } );
 
         return node.group;
     }
 
     function nodeClicked(node){
-
+        
+        // Select grandpa
         if( clickedGP == null && node.left != null && node.left.left != null ){
-            // Select grandpa
+           
             node.form.attr({ stroke: "red" }); 
             clickedGP = node;
             return;
         }
+        // deselect grandpa
         if( node == clickedGP ){
-            // unselect granpa if double click!
-            node.form.attr({ stroke: "#009DE0" }); 
-            if( clickedNode != null ){  
-                clickedNode.form.attr( { stroke: "#009DE0" } );
-                clickedNode = null;
-            }
-            clickedGP = null;
-            return;
+            resetSelectionProcedure();
+            return false;
         }
-        if( clickedNode == null && node.parent.parent == clickedGP ){
-            // Select first node
+        // Select first node
+        if( clickedNode == null && node.parent.parent == clickedGP ){    
             node.form.attr({ stroke: "#17253C" });
             clickedNode = node;
             return;
-        } 
-        if ( clickedNode == node ){
-            // unselect first node
-            node.form.attr({ stroke: '#009DE0' });
-            clickedNode = null;
+        }
+        // unselect first node
+        if ( clickedNode == node ){     
+            resetSelectionProcedure();
             return;
         }  
-        if ( node.parent.parent == clickedGP && node.parent != clickedNode.parent ){
+        // Select second node and perform change
+        if (   node.parent != null && node.parent.parent == clickedGP
+            && node.parent != clickedNode.parent ){
             node.form.attr({ stroke: '#009DE0' });
             node.form.attr({ stroke:  "#17253C" });
-
             moveTwoBranches( node, clickedNode, function(){
-               node.form.attr(             { stroke: "#009DE0" } );
-               clickedNode.form.attr( { stroke: "#009DE0" } );
-               clickedGP.form.attr(   { stroke: "#009DE0" } );
-               clickedNode = null;
-               clickedGP   = null; 
+                node.form.attr( { stroke: "#009DE0" } );
+                resetSelectionProcedure();
             });
         }
     }
@@ -164,13 +169,15 @@ var makeTree = function(id,values){
         var v1 = getMovedValues(gp1);
         var v2 = getMovedValues(gp2);
 
-        gp1.group.animate({ 
-            transform: 't0,' + (c2.y - c1.y + t1 )  
-            }, 1000, function(){
-                callback();
+        gp2.group.animate({ transform: 't0,' + (c1.y - c2.y + t2) }, 999);
+        gp1.group.animate({ transform: 't0,' + (c2.y - c1.y + t1 )}, 1001, 
+            function(){    
                 gp1.group.transform('t0,0');
-
+                gp2.group.transform('t0,0');
+                callback();
                 for( var i = 0; i < v1.length; i++ ){
+                    v1[i].removeClass("animate");
+                    v2[i].removeClass("animate");
                     var temp = v1[i].node.width.baseVal.value;
                     v1[i].node.width.baseVal.value = v2[i].node.width.baseVal.value
                     v2[i].node.width.baseVal.value = temp
@@ -181,14 +188,7 @@ var makeTree = function(id,values){
                     mixNode(gp2.parent);
                     return;
                 }
-
-        });
-        gp2.group.animate({ 
-            transform: 't0,' + (c1.y - c2.y + t2) 
-            }, 1000, function(){
-                gp2.form.attr({ stroke:  '#009DE0' });
-                gp2.group.transform('t0,0');
-        });
+        });    
     }
 
     function getMovedValues(node,values){
@@ -208,24 +208,76 @@ var makeTree = function(id,values){
         }
         var temp = (  node.left.value.node.width.baseVal.value + 
                       node.right.value.node.width.baseVal.value  ) / 2;
+        node.left.value.addClass("animate");
+        node.right.value.addClass("animate");
         node.left.value.node.width.baseVal.value = temp;
         node.right.value.node.width.baseVal.value = temp;
         return;
     }
 
-    function adjustPlots(values){
+    function applyBc(){
+        domain[        0        ].addClass("animate");
+        domain[        0        ].node.width.baseVal.value = 1;
+        domain[domain.length - 1].addClass("animate");
+        domain[domain.length - 1].node.width.baseVal.value = 1;
+    }
+
+    function advanceTime(time){
         for( var i = 0; i < domain.length; i++ ){
-           domain[i].node.width.baseVal.value = width * 0.3 * values[i];
-        }
+            domain[i].addClass("animate");
+            domain[i].node.width.baseVal.value += width * 0.29 * time;
+        } 
     }
 
     dadnode.left  = makeNode(dadnode,1,0);
     dadnode.right = makeNode(dadnode,1,1);
 
     printTree(dadnode);
-    adjustPlots(values);
 
-    console.log(dadnode);
+    return {
+
+        setUpBC(){
+            domain[        0        ].click( applyBc );
+            domain[domain.length - 1].click( applyBc );
+            return this;
+        },
+        setUpTimeAdvancement(time){
+            for( var i = 1; i < domain.length - 1; i++ ) {
+                domain[i].click( function(){ advanceTime(time); });
+            }
+            return this;
+        },
+        randomEddy: function(){
+            
+            resetSelectionProcedure();
+
+            var rng1 = Math.floor( Math.random() * nodecollection.length );
+            var rng2 = Math.floor(Math.random() * 1);
+            var rng3 = Math.floor(Math.random() * 1);
+
+            if(    nodecollection[rng1].left == null 
+                || nodecollection[rng1].left.left == null ){
+                return this.randomEddy();
+            }   
+            nodeClicked( nodecollection[rng1] );
+            if( rng2 == 0 ){ nodeClicked( nodecollection[rng1].left.left   ); }
+            else           { nodeClicked( nodecollection[rng1].left.right  ); }
+            if( rng3 == 0 ){ nodeClicked( nodecollection[rng1].right.left  ); }
+            else           { nodeClicked( nodecollection[rng1].right.right ); }           
+        },
+        play: function(){
+            if( setinterval != null ){
+                clearInterval(setinterval); 
+                setinterval = null; 
+                return;
+            }
+            setinterval = window.setInterval(function () {
+                tree2.randomEddy(); 
+            }, 1150);
+            return;
+        }
+    }
+
 }
 
 
