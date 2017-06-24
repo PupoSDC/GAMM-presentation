@@ -11,11 +11,10 @@ var tree = {
 
     clickedNode:      null,
 
-    initialise: function(id,number_of_levels,percentage){
+    initialise: function(id,number_of_levels,percentage,values){
         
         this.snap              = Snap(id);
         this.number_of_levels  = number_of_levels;
-
         this.dadnode = {
             x        : this.width  / (this.number_of_levels + 2),
             y        : this.height / 2,
@@ -32,19 +31,18 @@ var tree = {
         
         this.printLegs(this.dadnode);
         this.printNode(this.dadnode);
-
+        this.adjustPlots(values);
     },
-
 
     makeNode: function(parent,level,right){
 
         if( level > this.number_of_levels ){ return null; }
 
         var hd = this.height / ( Math.pow(2,level) * 2);
-        if( right ){ hd = hd * -1.0 }
+        if( !right ){ hd = hd * -1.0 }
 
         var node = {
-            x        : this.width * ( level + 1 ) / (this.number_of_levels+2),
+            x        : this.width * ( level + 1 ) / (this.number_of_levels+2) * 0.8,
             y        : parent.y + hd,
             r        : 12,
             parent   : parent,
@@ -52,7 +50,8 @@ var tree = {
             right    : null,
             leftleg  : null,
             rightleg : null,
-            id       : parent.id + right.toString()
+            id       : parent.id + right.toString(),
+            value    : null
         }
 
         node.left  = this.makeNode(node,level+1, 0 );
@@ -72,6 +71,23 @@ var tree = {
             id:          node.id
         });
 
+        if( node.left == null && node.right == null){
+            var n_values = Math.pow(2,this.number_of_levels);
+            var rect = this.snap.rect( 
+                this.width * 0.7,
+                this.domain.length * this.height / n_values,
+                this.width * 0.3,
+                this.height / n_values
+            );
+            rect.attr({
+                fill:       "#009DE0",
+                stroke:     '#17253C',
+                strokeWidth: 3
+            });
+            this.domain.push(rect);
+            node.value = rect;
+        }
+
         var self = this;
         if( node.parent != null ){
             node.form.click( function(e){
@@ -87,10 +103,10 @@ var tree = {
         if( node.left == null || node.right == null ){
             return;
         }
-        node.leftleg = this.snap.line(node.x,node.y,node.left.x,node.left.y);
+        node.leftleg  = this.snap.line(node.x,node.y,node.left.x,node.left.y);
         node.rightleg = this.snap.line(node.x,node.y,node.right.x,node.right.y);
-        node.leftleg.attr({ stroke: "#17253C", })
-        node.rightleg.attr({ stroke: "#17253C", })
+        node.leftleg.attr({ stroke: "#17253C", });
+        node.rightleg.attr({ stroke: "#17253C", });
         this.printLegs(node.left);
         this.printLegs(node.right);
     },
@@ -108,14 +124,13 @@ var tree = {
             this.moveTwoBranches(node,this.clickedNode);
             this.clickedNode = null;
         }
-
-
     },
 
     groupAllChildren(node,group){
         if( group == null ){ group = this.snap.group(); }
 
-        if( node.left == null || node.right == null ){ 
+        if( node.left == null || node.right == null ){
+            node.value.appendTo(group);
             return group;  
         }
 
@@ -153,67 +168,18 @@ var tree = {
             g2.transform('t0,0');
             gp2.form.attr({ stroke:  '#009DE0' });
         });
-    }
-
-
-}
-
-tree.initialise("#svgOne",4,0.8);
-
-/*
     },
 
-    drawCircle: function(node){
-
-    },
-
-
-    drawLine: function(x1,y1,x2,y2){
-
-    },
-
-    drawDomain: function(){
-
-    },
-
-    update: function(){
-        
-        var legs = this.nodes.length - Math.pow(2,this.number_of_levels);
-        for( var i = 0; i < legs ; i++ ){
-            this.drawLine(
-                this.nodes[i].x,
-                this.nodes[i].y,
-                this.nodes[i*2+1].x,
-                this.nodes[i*2+1].y,
-            );
-            this.drawLine(
-                this.nodes[i].x,
-                this.nodes[i].y,
-                this.nodes[i*2+2].x,
-                this.nodes[i*2+2].y,
-            );
+    adjustPlots(values){
+        for( var i = 0; i < this.domain.length; i++ ){
+            this.domain[i].node.width.baseVal.value = tree.width * 0.3 * values[i];
         }
-
-        for( var i = 0; i < this.nodes.length; i++ ){
-            this.drawCircle( this.nodes[i] );
-        };
-
-        this.drawDomain();
-
     },
 
-    onclick: function() {
+    linkPlotAndHips(){
 
     }
-
 }
 
+tree.initialise("#svgOne",4,0.8,[0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1]);
 
-tree.initialise("#svgOne",4,0.8);
-tree.domain = [0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1];
-//tree.update();
-//
-//setInterval(function(){
-//    tree.update();
-//}, 100);
-*/
