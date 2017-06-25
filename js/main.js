@@ -1,12 +1,17 @@
-// Creete tree animations
+////////////////////////////////////////////////////////////////////////////////
+// Creete tree animations //////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
 var tree1 = makeTree("treeOne",[0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1] );
 
 var tree2 = makeTree("treeTwo",[0,0.05,0.1,0.2,0.4,0.5,0.5,0.5,0.5,0.5,0.5,0.5,
 	0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.4,0.2,0.1,
 	0.05,0]).setUpTimeAdvancement(0.1).setUpBC();
 
+////////////////////////////////////////////////////////////////////////////////
+// Configure Reveal ////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
-// Configure Reveal
 Reveal.initialize({
 	controls: false,
 	progress: true,
@@ -35,10 +40,14 @@ Reveal.addEventListener( 'slidechanged',   toggleHeaderAndFooter );
 Reveal.addEventListener( 'overviewshown',  toggleHeaderAndFooter );
 Reveal.addEventListener( 'overviewhidden', toggleHeaderAndFooter );
 
-Reveal.addEventListener(        'ready',   function(){
+Reveal.addEventListener('ready', function(){
 	toggleHeaderAndFooter();
 	fillDayToday();
 });
+
+////////////////////////////////////////////////////////////////////////////////
+// Auxiliary functions /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 function fillDayToday(){
 	var  t = document.getElementsByClassName("datetoday");
@@ -69,7 +78,3 @@ function toggleHeaderAndFooter(){
 		$('.progress').show();
 	}
 }
-
-
-
-

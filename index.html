@@ -48,59 +48,155 @@
 
 			<div class="slides">
 
+<!-- TITLE SLIDE -->
 
-				<section>
-					<img src="img/logo.jpeg" id="cover-image">
-					<hr id="cover-rule">
-					<h3>Hips</h3>
-					<h3>Hierarchical Parcel Swapping</h3>
-					<p>
-						Pedro Pupo Sá da Costa
-						</br>
-						<small>
-							Heiko Schmidt, Moritz Fragner,
-							Juan Medina, Simon Schöps
-						</small>
-						</br>
-						<small>
-							Lehrstuhl Numerische Strömungs- und Gasdynamik
-						</small>
-						</br>
-						<small>
-							<span class="datetoday"></span>
-						</small>
-					</p>
-				</section>
+	<section>
+		<img src="img/logo.jpeg" id="cover-image">
+		<hr id="cover-rule">
+		<h3>Hips</h3>
+		<h3>Hierarchical Parcel Swapping</h3>
+		<p>
+			Pedro Pupo Sá da Costa
+			</br>
+			<small>
+				Heiko Schmidt, Moritz Fragner,
+				Juan Medina, Simon Schöps
+			</small>
+			</br>
+			<small>
+				Lehrstuhl Numerische Strömungs- und Gasdynamik
+			</small>
+			</br>
+			<small>
+				<span class="datetoday"></span>
+			</small>
+		</p>
+	</section>	
+<!-- -->
 
-				<section title="HiPS">
-					  
-				</section>
+<!-- AGEMDA -->
 
-				<section title="HiPS 101">
-					  <svg id="treeOne" width="960" height="640"> </svg>
-				</section>
+	<section title="Agenda">
+		<ul>
+			<h3> ODT:  A brief summary</h3>
+			<h3> HiPS: An extended introduction </h3>
+			<h3> HiPS: First results </h3>
+			<h3> HiPS: Future apph3cations </h3>
+			<h3> Discussion </h3>
+		</ul>
+	</section>
+<!-- -->
 
-				<section title="HiPS 101" id="channelAnimation">
-					<svg id="treeTwo" width="960" height="640"> </svg>
-				</section>
+<!-- BEGINING OF ODT REVISION -->
+				
+	<section>
+		<h1> ODT:  A brief summary</h1>
+	</section>
 
-				<section>
-				   	<img alt="image here" src="img/gif.gif"
-				   	     style="height: 500px;">
-				</section>
+	<section title="ODT: Channel Flow">
+		
+		<img src="img/channel.png" style="margin-bottom: 5%">
 
-				<section>
-				   	<canvas id="myCanvas" width="578" height="200"></canvas>
-				</section>
+		\[\begin{gather}
+			\frac{\delta U_i}{\delta t}
+			= \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi 
+			\label{eq:NavierStokesODT2}
+		\end{gather}\]
+
+	</section>
+
+	<section title="ODT: Tripplet Map">
+		<img src="img/trippletMap.png" >
+	</section>
+
+	<section title="ODT: Over Sampling Procedure">
+		\[\begin{gather} 
+			\left( \frac{l}{\tau} \right)^2 \sim  U^2_{x,k} 
+			+ U^2_{y,k} + U^2_{z,k} - Z\frac{\nu^2}{l^2} \\
+
+			\lambda(l,l_0,t) = \frac{C}{l^2 \tau(l,y,t)} \\
+
+			R(t) = \int \int \lambda (l,l_0,t) dl dl_0    \\
+
+				\Lambda(l,lo,t) = \frac{\lambda (l,l_0,t)}{R(t)} 
+				\subset [0,1]  
+		\end{gather}\]
+	</section>
+
+	<section title="ODT: Algorithm">
+		<img src="img/algorithm.png">
+	</section>
+<!-- -->
+
+<!-- BEGINIING OF HIPS INTRODUCTION -->
+				
+	<section>
+		<h1> HiPS: An extended introduction </h1>
+	</section>
+
+	<section title="HiPS: Channel flow">
+		
+		<img src="img/channel.png" style="margin-bottom: 5%">
+
+		\[\begin{gather}
+			\frac{\delta U_i}{\delta t} = ME - EE - \phi 
+		\end{gather}\]
+
+	</section>
+
+	<section title="HiPS: Swap & Mix">
+		<svg id="treeOne" width="960" height="640"> </svg>
+	</section>
+	
+	<section title="HiPS 101">
+	   	<img alt="image here" src="img/gif.gif"
+	   	     style="height: 500px;">
+	</section>
+
+	<section title="HiPS: Swap & Mix Results">
+		
+		<img src="img/channel.png" style="margin-bottom: 5%">
+
+		\[\begin{gather}
+			\frac{\delta U_i}{\delta t} = ME - EE - \phi 
+		\end{gather}\]
+
+	</section>
+
+	<section title="HiPS: Channel Flow" id="channelAnimation">
+		<svg id="treeTwo" width="960" height="640"> </svg>
+	</section>
+
+
+	<section title="HiPS ODT Sampling Procedure">
+		
+
+		\[\begin{gather}
+			U_{i,k} = \frac{1}{l^2} \int U_i (f(y),t) K(y) dy \\
+			
+			\tau = \frac{l}{\sqrt[]{ U^2_{x,k} + U^2_{y,k}
+				 + U^2_{z,k} }} \\
+
+			\lambda = \frac{C}{ \tau l^2  } \\
+
+			\mbox{if}  \frac{\lambda(l,l_0,t)}{R_T} > PP_{RNG} \Rightarrow \mbox{Implement eddy!}
+
+		\end{gather}\]
+
+	</section>
+<!-- -->
+
+<!-- END OF Presentation -->
 
 				<section>
 				   	<h3> Discussion
 				</section>
-
+<!-- -->
 
 			</div>
 
 		</div>
 
 	</body>
+
 </html>
