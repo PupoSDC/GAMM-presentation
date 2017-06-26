@@ -10,9 +10,9 @@ body {
 }
 
 #cover-rule {
-  height: 4px;
-  background-color: #009DE0;
-  color:  #009DE0;
+  height:             4px;
+  background-color:   #009DE0;
+  color:              #009DE0;
 }
 
 #header {
@@ -105,4 +105,20 @@ svg rect.animate{
   transition:         width 0.5s ease-in-out;
 }
 
+.reveal table.table-parameters td {
+  border-bottom:      0px solid;
+}
 
+.reveal section .alignleft {
+  display:            table;  
+  height:             400px; 
+  text-align:         left; 
+  float:              left;
+}
+
+.reveal section .alignright {
+  display:            table;  
+  height:             400px; 
+  text-align:         right; 
+  float:              right;
+}
