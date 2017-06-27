@@ -93,8 +93,7 @@
 		<h1> ODT:  A Brief Summary</h1>
 	</section>
 
-	<section title="ODT: Channel Flow">
-		
+	<section title="ODT: Channel Flow">	
 		<img src="img/channel.png" style="margin-bottom: 5%">
 
 		\[\begin{gather}
@@ -102,7 +101,6 @@
 			= \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi 
 			\label{eq:NavierStokesODT2}
 		\end{gather}\]
-
 	</section>
 
 	<section title="ODT: Tripplet Map">
@@ -141,7 +139,6 @@
 		\[\begin{gather}
 			\frac{\delta U_i}{\delta t} = ME - EE - \phi 
 		\end{gather}\]
-
 	</section>
 
 	<section title="HiPS: Swap & Mix">
@@ -149,28 +146,26 @@
 	</section>
 	
 	<section title="HiPS 101">
-	   	<img alt="image here" src="img/gif.gif"
-	   	     style="height: 500px;">
+	   	<img alt="image here" src="img/gif.gif" style="height: 500px;">
 	</section>
 
-	<section title="HiPS: Swap & Mix Results">
-		
+	<section title="HiPS: Swap & Mix Results">	
 		<img src="img/channel.png" style="margin-bottom: 5%">
 
 		\[\begin{gather}
 			\frac{\delta U_i}{\delta t} = ME - EE - \phi 
 		\end{gather}\]
-
 	</section>
 
 	<section title="HiPS: Channel Flow" id="channelAnimation">
 		<svg id="treeTwo" width="960" height="640"> </svg>
 	</section>
-
+	
+	<section title="HiPS 101">
+	   	<img alt="image here" src="img/channel.gif" style="height: 500px;">
+	</section>
 
 	<section title="HiPS ODT Sampling Procedure">
-		
-
 		\[\begin{gather}
 			U_{i,k} = \frac{1}{l^2} \int U_i (f(y),t) K(y) dy \\
 			
@@ -179,12 +174,14 @@
 
 			\lambda = \frac{C}{ \tau l^2  } \\
 
-			\mbox{if}  \quad \frac{\lambda(l,l_0,t)}{R_T} > PP_{RNG} \Rightarrow \mbox{Implement eddy!}
+			\mbox{if}  \quad \frac{\lambda(l,l_0,t)}{R_T} > PP_{RNG} 
+			           \Rightarrow \mbox{Implement eddy!}
 
 		\end{gather}\]
-
 	</section>
 <!-- -->
+
+<!-- HIPS RESULTS -->
 
 	<section>
 		<h1> HiPS: First Results </h1>
@@ -231,27 +228,135 @@
 				</table>
 			</div>
 		</div>	
-
 	</section>
 
 	<section title="Parameter Setup">
 		
-	\[ 
-		\hat{T} = \left( \frac{2}{0.0743} \right)^{2/3} \frac{h}{U}
-		    \left( \frac{2h}{U} \frac{d\bar{u}}{dy} \bigg\rvert_w \right)^{1/6}
-	\]
+		\[ 
+			\hat{T} = \left( \frac{2}{0.0743} \right)^{2/3} \frac{h}{U}
+			          \left( \frac{2h}{U} \frac{d\bar{u}}{dy} \bigg\rvert_w 
+			          \right)^{1/6}
+		\]
 
 	<p style="margin-top: 10%">\[ \hat{C} = C \frac{T}{ \hat{T} }	\] </p>
 	</section>
 
-	<section title="Parameter Setup">
-		
-	\[ 
-		\nu = - \frac{h}{ \rho } \frac{dp}{dx} 
-		     \frac{d\bar{u}}{dy} \bigg\rvert_w 
-	\]
-
+	<section title="Parameter Setup">		
+		\[ 
+			\nu = - \frac{h}{ \rho } \frac{dp}{dx} 
+			     \frac{d\bar{u}}{dy} \bigg\rvert_w 
+		\]
 	</section>
+
+	<section title="N8: Corrected Reynolds Number Results">
+
+		<table style="font-size: 0.85em; text-align: right;"> 
+			<thead >
+				<tr>
+					<th> C/T    </th>
+					<th> 0.001  </th>
+					<th> 0.005  </th>
+					<th> 0.01 	</th>
+					<th> 0.05 	</th>
+					<th> 0.1 	</th>
+					<th> 0.5 	</th>
+					<th> 1 	    </th>
+					<th> 5 	    </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="font-weight: bold; text-align: center"> 1 </td>
+					<td> 913 </td>
+					<td> 918 </td>
+					<td> 931 </td> 
+					<td> 920 </td> 
+					<td> 921 </td> 
+					<td> 946 </td> 
+					<td> 912 </td>
+					<td> 922 </td>                                                                                                                                                                                         
+				</tr>
+				<tr>
+					<td style="font-weight: bold; text-align: center"> 2 </td>
+					<td> 926 </td>
+					<td> 956 </td>
+					<td> 922 </td> 
+					<td> 937 </td> 
+					<td> 922 </td> 
+					<td> 962 </td> 
+					<td> 894 </td>
+					<td> 934 </td>                                                                                                                                                                                      
+				</tr>
+				<tr>
+					<td style="font-weight: bold; text-align: center"> 3 </td>
+					<td> 935 </td>
+					<td> 964 </td>
+					<td> 924 </td> 
+					<td> 900 </td> 
+					<td> 918 </td> 
+					<td> 923 </td> 
+					<td> 884 </td>
+					<td> 906 </td>                                                                                                                                                                                        
+				</tr>
+				<tr>
+					<td style="font-weight: bold; text-align: center"> 4 </td>
+					<td> 910 </td>
+					<td> 934 </td>
+					<td> 924 </td> 
+					<td> 915 </td> 
+					<td> 920 </td> 
+					<td> 897 </td> 
+					<td> 900 </td>
+					<td> 904 </td>                                                                                                                                                                                         
+				</tr>
+				<tr>
+					<td style="font-weight: bold; text-align: center"> 5 </td>
+					<td> 915 </td>
+					<td> 912 </td>
+					<td> 926 </td> 
+					<td> 926 </td> 
+					<td> 918 </td> 
+					<td> 915 </td> 
+					<td> 919 </td>
+					<td> 922 </td>                                                                                                                                                                                         
+				</tr>
+				<tr>
+					<td style="font-weight: bold; text-align: center"> 6 </td>
+					<td> 921 </td>
+					<td> 916 </td>
+					<td> 911 </td> 
+					<td> 906 </td> 
+					<td> 911 </td> 
+					<td> 924 </td> 
+					<td> 920 </td>
+					<td> 917 </td>                                                                                                                                                                                         
+				</tr>
+				<tr>
+					<td style="font-weight: bold; text-align: center"> 7 </td>
+					<td> 917 </td>
+					<td> 916 </td>
+					<td> 923 </td> 
+					<td> 918 </td> 
+					<td> 917 </td> 
+					<td> 916 </td> 
+					<td> 917 </td>
+					<td> 917 </td>                                                                                                                                                                                        
+				</tr>
+				<tr>
+					<td style="font-weight: bold; text-align: center"> 8 </td>
+					<td> 919 </td>
+					<td> 922 </td>
+					<td> 917 </td> 
+					<td> 922 </td> 
+					<td> 917 </td> 
+					<td> 916 </td> 
+					<td> 917 </td>
+					<td> 917 </td>
+				</tr>
+			</tbody>  
+		</table>
+	</section>
+
 
 	<section title="N8: velocity Profile">
 		<img src="img/uresult.png">
@@ -266,10 +371,26 @@
 	</section>
 
 <!-- END OF Presentation -->
+	
+	<section title="HiPS: Untackled Possibilities">
+		<div style="margin-top: 20px; text-align: left">
+			Non-uniform grids;     
+		</div>
+		<div style="margin-top: 20px; text-align: left"> 
+			N-ary Trees;         
+		</div>
+		<div style="margin-top: 20px; text-align: left">
+			Different variables at different levels; 
+		</div>
+		<div style="margin-top: 20px; text-align: left"> 
+			... 
+		</div>
+	</section>
 
 	<section>
 	   	<h3> Discussion
 	</section>
+
 <!-- -->
 
 			</div>
