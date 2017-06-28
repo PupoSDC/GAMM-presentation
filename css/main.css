@@ -110,15 +110,22 @@ svg rect.animate{
 }
 
 .reveal section .alignleft {
-  display:            table;  
-  height:             400px; 
-  text-align:         left; 
+  display:            table;
+  height:             400px;
+  text-align:         left;
   float:              left;
 }
 
 .reveal section .alignright {
-  display:            table;  
-  height:             400px; 
-  text-align:         right; 
+  display:            table;
+  height:             400px;
+  text-align:         right;
+  float:              right;
+}
+
+.reveal section .alignbottom {
+  width:              100%;
+  display:            block;
+  text-align:         right;
   float:              right;
 }

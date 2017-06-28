@@ -71,7 +71,7 @@
 				<span class="datetoday"></span>
 			</small>
 		</p>
-	</section>	
+	</section>
 <!-- -->
 
 <!-- AGEMDA -->
@@ -88,17 +88,17 @@
 <!-- -->
 
 <!-- BEGINING OF ODT REVISION -->
-				
+
 	<section>
 		<h1> ODT:  A Brief Summary</h1>
 	</section>
 
-	<section title="ODT: Channel Flow">	
+	<section title="ODT: Channel Flow">
 		<img src="img/channel.png" style="margin-bottom: 5%">
 
 		\[\begin{gather}
 			\frac{\delta U_i}{\delta t}
-			= \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi 
+			= \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi
 			\label{eq:NavierStokesODT2}
 		\end{gather}\]
 	</section>
@@ -108,16 +108,16 @@
 	</section>
 
 	<section title="ODT: Over Sampling Procedure">
-		\[\begin{gather} 
-			\left( \frac{l}{\tau} \right)^2 \sim  U^2_{x,k} 
+		\[\begin{gather}
+			\left( \frac{l}{\tau} \right)^2 \sim  U^2_{x,k}
 			+ U^2_{y,k} + U^2_{z,k} - Z\frac{\nu^2}{l^2} \\
 
 			\lambda(l,l_0,t) = \frac{C}{l^2 \tau(l,y,t)} \\
 
 			R(t) = \int \int \lambda (l,l_0,t) dl dl_0    \\
 
-				\Lambda(l,lo,t) = \frac{\lambda (l,l_0,t)}{R(t)} 
-				\subset [0,1]  
+				\Lambda(l,lo,t) = \frac{\lambda (l,l_0,t)}{R(t)}
+				\subset [0,1]
 		\end{gather}\]
 	</section>
 
@@ -127,57 +127,76 @@
 <!-- -->
 
 <!-- BEGINIING OF HIPS INTRODUCTION -->
-				
+
 	<section>
 		<h1> HiPS: An Extended Introduction </h1>
 	</section>
 
 	<section title="HiPS: Channel flow">
-		
+
 		<img src="img/channel.png" style="margin-bottom: 5%">
 
 		\[\begin{gather}
-			\frac{\delta U_i}{\delta t} = ME - EE - \phi 
+			\frac{\delta U_i}{\delta t} = ME - EE - \phi
 		\end{gather}\]
 	</section>
 
 	<section title="HiPS: Swap & Mix">
 		<svg id="treeOne" width="960" height="640"> </svg>
 	</section>
-	
-	<section title="HiPS 101">
+
+	<section title="HiPS: Swap & Mix">
 	   	<img alt="image here" src="img/gif.gif" style="height: 500px;">
 	</section>
 
-	<section title="HiPS: Swap & Mix Results">	
+	<section title="HiPS: Channel Flow">
 		<img src="img/channel.png" style="margin-bottom: 5%">
 
 		\[\begin{gather}
-			\frac{\delta U_i}{\delta t} = ME - EE - \phi 
+			\frac{\delta U_i}{\delta t} = ME - EE - \phi
 		\end{gather}\]
 	</section>
 
 	<section title="HiPS: Channel Flow" id="channelAnimation">
 		<svg id="treeTwo" width="960" height="640"> </svg>
 	</section>
-	
-	<section title="HiPS 101">
+
+	<section title="HiPS: Channel Flow">
 	   	<img alt="image here" src="img/channel.gif" style="height: 500px;">
 	</section>
 
-	<section title="HiPS ODT Sampling Procedure">
-		\[\begin{gather}
-			U_{i,k} = \frac{1}{l^2} \int U_i (f(y),t) K(y) dy \\
-			
-			\tau = \frac{l}{\sqrt[]{ U^2_{x,k} + U^2_{y,k}
-				 + U^2_{z,k} }} \\
+	<section >
 
-			\lambda = \frac{C}{ \tau l^2  } \\
+		<section title="HiPS: ODT Sampling Procedure">
+			\[\begin{gather}
+				U_{i,k} = \frac{1}{l^2} \int U_i (f(y),t) K(y) dy \\
 
-			\mbox{if}  \quad \frac{\lambda(l,l_0,t)}{R_T} > PP_{RNG} 
-			           \Rightarrow \mbox{Implement eddy!}
+				\tau = \frac{l}{\sqrt[]{ U^2_{x,k} + U^2_{y,k}
+					 + U^2_{z,k} }} \\
 
-		\end{gather}\]
+				\lambda = \frac{C}{ \tau l^2  } \\
+
+				\mbox{if}  \quad \frac{\lambda(l,l_0,t)}{R_T} > PP_{RNG}
+				           \Rightarrow \mbox{Implement eddy!}
+
+			\end{gather}\]
+		</section >
+		<section title="ODT: Sampling Procedure" >
+			\[\begin{gather}
+
+				U_{i,k} = \frac{1}{l^2} \int U_i (f(y),t) K(y) dy \\
+
+				\tau = \frac{l}{\sqrt[]{ U^2_{x,k} + U^2_{y,k}
+					 + U^2_{z,k} - Z\frac{\nu^2}{l^2} }} \\
+
+				\lambda(l,l_0,t) = \frac{C}{l^2 \tau(l,y,t)} \\
+
+				\mbox{if}  \quad \frac{\lambda(l,l_0,t)}{ f(l) g(l_0) R_T}
+					> PP_{RNG} \Rightarrow \mbox{Implement eddy!}
+
+			\end{gather}\]
+		</section>
+
 	</section>
 <!-- -->
 
@@ -188,7 +207,7 @@
 	</section>
 
 	<section title="Parameter Setup">
-		
+
 		<div class="alignleft" >
 			<div style="display: table-cell; vertical-align: middle;">
 
@@ -206,13 +225,13 @@
 						<td> \[ h \]              </td>
 					</tr>
 				</table>
-				
-				\[ T =  \frac{1}{  
-					\sqrt{ -1 \frac{dp}{dx} \frac{1}{h \rho}  } 
+
+				\[ T =  \frac{1}{
+					\sqrt{ - \frac{dp}{dx} \frac{1}{h \rho}  }
 				} \]
 
 			</div>
-		</div>	
+		</div>
 
 		<div class="alignright" >
 			<div style="display: table-cell; vertical-align: middle;">
@@ -226,31 +245,36 @@
 						<td> \[ C \]             </td>
 					</tr>
 				</table>
+
+				<div style="margin-top: 30%">
+					\[
+					\nu = - \frac{h}{ \rho } \frac{dp}{dx}
+					     \frac{d\bar{u}}{dy} \bigg\rvert_w
+					\]
+				</div>
+
 			</div>
-		</div>	
+		</div>
+
+
 	</section>
 
 	<section title="Parameter Setup">
-		
-		\[ 
+
+		\[
 			\hat{T} = \left( \frac{2}{0.0743} \right)^{2/3} \frac{h}{U}
-			          \left( \frac{2h}{U} \frac{d\bar{u}}{dy} \bigg\rvert_w 
+			          \left( \frac{2h}{U} \frac{d\bar{u}}{dy} \bigg\rvert_w
 			          \right)^{1/6}
 		\]
 
 	<p style="margin-top: 10%">\[ \hat{C} = C \frac{T}{ \hat{T} }	\] </p>
 	</section>
 
-	<section title="Parameter Setup">		
-		\[ 
-			\nu = - \frac{h}{ \rho } \frac{dp}{dx} 
-			     \frac{d\bar{u}}{dy} \bigg\rvert_w 
-		\]
-	</section>
+
 
 	<section title="N8: Corrected Reynolds Number Results">
 
-		<table style="font-size: 0.85em; text-align: right;"> 
+		<table style="font-size: 0.85em; text-align: right;">
 			<thead >
 				<tr>
 					<th> C/T    </th>
@@ -269,91 +293,91 @@
 					<td style="font-weight: bold; text-align: center"> 1 </td>
 					<td> 913 </td>
 					<td> 918 </td>
-					<td> 931 </td> 
-					<td> 920 </td> 
-					<td> 921 </td> 
-					<td> 946 </td> 
+					<td> 931 </td>
+					<td> 920 </td>
+					<td> 921 </td>
+					<td> 946 </td>
 					<td> 912 </td>
-					<td> 922 </td>                                                                                                                                                                                         
+					<td> 922 </td>
 				</tr>
 				<tr>
 					<td style="font-weight: bold; text-align: center"> 2 </td>
 					<td> 926 </td>
 					<td> 956 </td>
-					<td> 922 </td> 
-					<td> 937 </td> 
-					<td> 922 </td> 
-					<td> 962 </td> 
+					<td> 922 </td>
+					<td> 937 </td>
+					<td> 922 </td>
+					<td> 962 </td>
 					<td> 894 </td>
-					<td> 934 </td>                                                                                                                                                                                      
+					<td> 934 </td>
 				</tr>
 				<tr>
 					<td style="font-weight: bold; text-align: center"> 3 </td>
 					<td> 935 </td>
 					<td> 964 </td>
-					<td> 924 </td> 
-					<td> 900 </td> 
-					<td> 918 </td> 
-					<td> 923 </td> 
+					<td> 924 </td>
+					<td> 900 </td>
+					<td> 918 </td>
+					<td> 923 </td>
 					<td> 884 </td>
-					<td> 906 </td>                                                                                                                                                                                        
+					<td> 906 </td>
 				</tr>
 				<tr>
 					<td style="font-weight: bold; text-align: center"> 4 </td>
 					<td> 910 </td>
 					<td> 934 </td>
-					<td> 924 </td> 
-					<td> 915 </td> 
-					<td> 920 </td> 
-					<td> 897 </td> 
+					<td> 924 </td>
+					<td> 915 </td>
+					<td> 920 </td>
+					<td> 897 </td>
 					<td> 900 </td>
-					<td> 904 </td>                                                                                                                                                                                         
+					<td> 904 </td>
 				</tr>
 				<tr>
 					<td style="font-weight: bold; text-align: center"> 5 </td>
 					<td> 915 </td>
 					<td> 912 </td>
-					<td> 926 </td> 
-					<td> 926 </td> 
-					<td> 918 </td> 
-					<td> 915 </td> 
+					<td> 926 </td>
+					<td> 926 </td>
+					<td> 918 </td>
+					<td> 915 </td>
 					<td> 919 </td>
-					<td> 922 </td>                                                                                                                                                                                         
+					<td> 922 </td>
 				</tr>
 				<tr>
 					<td style="font-weight: bold; text-align: center"> 6 </td>
 					<td> 921 </td>
 					<td> 916 </td>
-					<td> 911 </td> 
-					<td> 906 </td> 
-					<td> 911 </td> 
-					<td> 924 </td> 
+					<td> 911 </td>
+					<td> 906 </td>
+					<td> 911 </td>
+					<td> 924 </td>
 					<td> 920 </td>
-					<td> 917 </td>                                                                                                                                                                                         
+					<td> 917 </td>
 				</tr>
 				<tr>
 					<td style="font-weight: bold; text-align: center"> 7 </td>
 					<td> 917 </td>
 					<td> 916 </td>
-					<td> 923 </td> 
-					<td> 918 </td> 
-					<td> 917 </td> 
-					<td> 916 </td> 
+					<td> 923 </td>
+					<td> 918 </td>
 					<td> 917 </td>
-					<td> 917 </td>                                                                                                                                                                                        
+					<td> 916 </td>
+					<td> 917 </td>
+					<td> 917 </td>
 				</tr>
 				<tr>
 					<td style="font-weight: bold; text-align: center"> 8 </td>
 					<td> 919 </td>
 					<td> 922 </td>
-					<td> 917 </td> 
-					<td> 922 </td> 
-					<td> 917 </td> 
-					<td> 916 </td> 
+					<td> 917 </td>
+					<td> 922 </td>
+					<td> 917 </td>
+					<td> 916 </td>
 					<td> 917 </td>
 					<td> 917 </td>
 				</tr>
-			</tbody>  
+			</tbody>
 		</table>
 	</section>
 
@@ -371,19 +395,19 @@
 	</section>
 
 <!-- END OF Presentation -->
-	
+
 	<section title="HiPS: Untackled Possibilities">
 		<div style="margin-top: 20px; text-align: left">
-			Non-uniform grids;     
-		</div>
-		<div style="margin-top: 20px; text-align: left"> 
-			N-ary Trees;         
+			Non-uniform grids;
 		</div>
 		<div style="margin-top: 20px; text-align: left">
-			Different variables at different levels; 
+			N-ary Trees;
 		</div>
-		<div style="margin-top: 20px; text-align: left"> 
-			... 
+		<div style="margin-top: 20px; text-align: left">
+			Different variables at different levels;
+		</div>
+		<div style="margin-top: 20px; text-align: left">
+			...
 		</div>
 	</section>
 
