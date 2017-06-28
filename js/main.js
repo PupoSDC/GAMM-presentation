@@ -32,9 +32,20 @@ Reveal.initialize({
 		{ src: 'plugin/math/math.js' },
 	],
 	keyboard: {
-	    13: tree2.play
-	},
-	 
+	    87: function(){ // w
+	    	tree2.play();
+	    },
+	    65: function(){ // a
+	    	tree2.applyBC();
+	    },
+	    83: function() { // s
+	    	tree2.randomEddy();
+	    },
+	    68: function(){ // d
+	    	tree2.advanceTime(0.1);
+	    },
+
+	}
 
 });
 
@@ -80,3 +91,4 @@ function toggleHeaderAndFooter(){
 		$('.progress').show();
 	}
 }
+
