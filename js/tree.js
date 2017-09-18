@@ -74,7 +74,7 @@ var makeTree = function(id,values){
                 .attr({ stroke: "#17253C", })
                 .appendTo( node.group );
 
-            // Draw nodes recusively and append to group
+            // Draw nodes recursively and append to group
             printTree(  node.left ).appendTo( node.group );
             printTree( node.right ).appendTo( node.group );
 
@@ -133,7 +133,7 @@ var makeTree = function(id,values){
             clickedNode = node;
             return;
         }
-        // unselect first node
+        // Deselect first node
         if ( clickedNode == node ){
             resetSelectionProcedure();
             return;
