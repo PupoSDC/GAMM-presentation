@@ -101,7 +101,7 @@
 			\label{eq:NavierStokesODT2}
 		\end{gather}\]
 	</section>
-<!--
+
 	<section title="ODT: Triplet Map">
 		<img src="img/tripletMap.png" >
 	</section>
@@ -119,7 +119,7 @@
 
 		\end{gather}\]
 	</section>
--->
+
 	<section title="ODT: Algorithm">
 		<img src="img/algorithm.png">
 	</section>
@@ -163,7 +163,7 @@
 	<section title="HiPS: Channel Flow">
 	   	<img alt="image here" src="img/channel.gif" style="height: 500px;">
 	</section>
-<!--
+
 	<section >
 
 		<section title="HiPS: ODT Sampling Procedure">
@@ -173,9 +173,9 @@
 				\tau = \frac{l}{\sqrt[]{ U^2_{x,k} + U^2_{y,k}
 					 + U^2_{z,k} }} \\
 
-				\lambda = \frac{C}{ \tau l^2  } \\
+				\lambda (i,t) = \frac{C}{ \tau l^2  } \\
 
-				\mbox{if}  \quad \frac{\lambda(l,l_0,t)}{R_T} > PP_{RNG}
+				\mbox{if}  \quad \frac{\lambda (i,t)}{R_T} > PP_{RNG}
 				           \Rightarrow \mbox{Implement eddy!}
 
 			\end{gather}\]
@@ -188,9 +188,9 @@
 				\tau = \frac{l}{\sqrt[]{ U^2_{x,k} + U^2_{y,k}
 					 + U^2_{z,k} - Z\frac{\nu^2}{l^2} }} \\
 
-				\lambda(l,l_0,t) = \frac{C}{l^2 \tau(l,y,t)} \\
+				\lambda (l,l_0,t) = \frac{C}{l^2 \tau } \\
 
-				\mbox{if}  \quad \frac{\lambda(i,t)}{ F(l) G(l_0) R_T}
+				\mbox{if}  \quad \frac{\lambda (l,l_0,t)}{ F(l) G(l_0) R_T}
 					> PP_{RNG} \Rightarrow \mbox{Implement eddy!}
 
 			\end{gather}\]
