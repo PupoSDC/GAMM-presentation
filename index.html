@@ -53,14 +53,15 @@
 	<section>
 		<img src="img/logo.jpeg" id="cover-image">
 		<hr id="cover-rule">
-		<h3>Hips</h3>
-		<h3>Hierarchical Parcel Swapping</h3>
+		<h3>
+			Towards a hybrid turbulent mixing model based on hierarchical
+			parcel-swapping and <br> one-dimensional turbulence
+		</h3>
 		<p>
 			Pedro Pupo Sá da Costa
 			</br>
 			<small>
-				Heiko Schmidt, <!--Moritz Fragner, -->
-				Juan Medina, Simon Schöps
+				Heiko Schmidt
 			</small>
 			</br>
 			<small>
@@ -78,10 +79,11 @@
 
 	<section title="Outline">
 		<ul>
-			<h3> ODT:  A Brief summary</h3>
-			<h3> HiPS: An Extended Introduction </h3>
-			<h3> HiPS: First Results </h3>
-			<h3> Discussion </h3>
+			<h3> X-LES                        </h3>
+			<h3> One Dimensional Turbulance   </h3>
+			<h3> Hierarchical parcel swapping </h3>
+			<h3> First Results                </h3>
+			<h3> Discussion                   </h3>
 		</ul>
 	</section>
 <!-- -->
@@ -89,7 +91,17 @@
 <!-- BEGINING OF ODT REVISION -->
 
 	<section>
-		<h1> ODT:  A Brief Summary</h1>
+		<h1>XLES formulation</h1>
+	</section>
+
+	<section title="ODT: Channel Flow">
+		<img src="img/channel.png" style="margin-bottom: 5%">
+
+		\[\begin{gather}
+			\frac{\delta U_i}{\delta t}
+			= \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi
+			\label{eq:NavierStokesODT2}
+		\end{gather}\]
 	</section>
 
 	<section title="ODT: Channel Flow">
