@@ -79,8 +79,10 @@
 
 	<section title="Outline">
 		<ul>
-			<h3> The X-LES Formulation        </h3>
+			<h3> Motivation                   </h3>
 			<h3> One Dimensional Turbulance   </h3>
+			<h3> The X-LES Formulation        </h3>
+
 			<h3> Hierarchical parcel swapping </h3>
 			<h3> First Results                </h3>
 			<h3> Discussion                   </h3>
@@ -90,14 +92,46 @@
 
 <!-- BEGINING OF ODT REVISION -->
 
+	<!--<section>
+		<h1>Motivation/h1>
+	</section> -->
+	<section title="Motivation">
+		<ul>
+			<li>
+				Generalize the XLES formulation to allow an implementation of
+				ODTas a sub-grid model in external CFD codes.
+			</li>
+			<li>
+				Develop alternative ODT models within this framework to improve
+				overall performance or provide application specific advantages.
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h1>One Dimensional Turbulance</h1>
+	</section>
+	<section title="One Dimensional Turbulance">
+		<img src="img/channel.png" style="margin-bottom: 5%">
+
+		\[\begin{gather}
+			\frac{\delta U_i}{\delta t}
+			= \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi
+			\label{eq:NavierStokesODT2}
+		\end{gather}\]
+	</section>
+
+	<section title="ODT: Triplet Map">
+		<img src="img/tripletMap.png" >
+	</section>
+
+
 	<section>
 		<h1>The X-LES Formulation</h1>
 	</section>
 	<section title="The X-LES Formulation">
 		<img src="img/ODTLES.png" style="margin-bottom: 5%">
 	</section>
-
-
 	<section title="The X-LES Formulation">
 
 		<p style="padding-bottom: 1em;">
@@ -141,19 +175,6 @@
 		</div>
 	</section>
 
-	<section title="ODT: Channel Flow">
-		<img src="img/channel.png" style="margin-bottom: 5%">
-
-		\[\begin{gather}
-			\frac{\delta U_i}{\delta t}
-			= \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi
-			\label{eq:NavierStokesODT2}
-		\end{gather}\]
-	</section>
-
-	<section title="ODT: Triplet Map">
-		<img src="img/tripletMap.png" >
-	</section>
 
 
 	<section title="ODT: Over Sampling Procedure">
