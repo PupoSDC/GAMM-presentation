@@ -129,3 +129,9 @@ svg rect.animate{
   text-align:         right;
   float:              right;
 }
+
+#bigequation {
+  line-height: 0.9em;
+  font-size: 2;
+  width: 50%;
+}

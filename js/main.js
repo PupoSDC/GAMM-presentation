@@ -24,7 +24,8 @@ Reveal.initialize({
 	margin: 0.2,
 
 	math: {
-		config: 'TeX-AMS_HTML-full'
+		config: 'TeX-AMS_HTML-full',
+		showMathMenu: true
 	},
 
 	dependencies: [

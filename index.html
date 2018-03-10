@@ -79,7 +79,7 @@
 
 	<section title="Outline">
 		<ul>
-			<h3> X-LES                        </h3>
+			<h3> The X-LES Formulation        </h3>
 			<h3> One Dimensional Turbulance   </h3>
 			<h3> Hierarchical parcel swapping </h3>
 			<h3> First Results                </h3>
@@ -91,17 +91,54 @@
 <!-- BEGINING OF ODT REVISION -->
 
 	<section>
-		<h1>XLES formulation</h1>
+		<h1>The X-LES Formulation</h1>
+	</section>
+	<section title="The X-LES Formulation">
+		<img src="img/ODTLES.png" style="margin-bottom: 5%">
 	</section>
 
-	<section title="ODT: Channel Flow">
-		<img src="img/channel.png" style="margin-bottom: 5%">
 
+	<section title="The X-LES Formulation">
+
+		<p style="padding-bottom: 1em;">
+			Navier Stokes Equations:
+		</p>
+
+		<div style= "font-size: 52%; padding-bottom: 1em;">
 		\[\begin{gather}
-			\frac{\delta U_i}{\delta t}
-			= \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi
-			\label{eq:NavierStokesODT2}
+		  \frac{ \delta u_{k,i} }{ \delta t } =
+		       \nu\frac{ \delta^2 u_{k,i}}{ \delta x_k^2}
+		     + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
+		     + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
+		     - \frac{ \delta ( u_{k,k} u_{k,i} ) }{ \delta x_k }
+		     - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
+		     - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
+		     - \frac{1}{\rho} \frac{\delta p}{\delta x_i }
 		\end{gather}\]
+		</div>
+
+		<p style="padding-bottom: 1em;">
+			Navier Stokes Equations with ODT model:
+		</p>
+
+
+		<div style= "display:inline-block; font-size: 52%">
+		\[\begin{gather}
+		  \frac{ \delta u_{k,i} }{ \delta t } =
+		      \underbrace{
+		          \nu\frac{ \delta^2 u_{k,j}}{ \delta x_k^2}
+		        - \frac{ \delta ( U_{k,k} u_{k,i} ) }{ \delta x_k }
+		        + EE
+		        - \frac{1}{\rho} \frac{\delta P}{\delta x_i }
+		      }_{ \text{Inline: ODT advancement} }
+		    + \underbrace{
+		            \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
+		          + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
+		    	  - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
+		    	  - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
+		    }_{ \text{Offline: Explicit advancement} }
+		\end{gather}\]
+		</div>
 	</section>
 
 	<section title="ODT: Channel Flow">
