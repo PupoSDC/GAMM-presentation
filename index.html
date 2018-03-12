@@ -1,52 +1,52 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+	<meta charset="utf-8">
 
-		<title>HIPS</title>
+	<title>HIPS</title>
 
-		<meta name="description" content="HiPS">
-		<meta name="author" content="Pedro Sa da Costa">
+	<meta name="description" content="HiPS">
+	<meta name="author" content="Pedro Sa da Costa">
 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style"
-			  content="black-translucent"                  >
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style"
+		  content="black-translucent"                  >
 
-		<meta name="viewport" content="width=device-width,
-					initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width,
+				initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css"                >
-		<link rel="stylesheet" href="css/theme/moon.css" id="theme" >
-		<link rel="stylesheet" href="css/main.css"                  >
+	<link rel="stylesheet" href="css/reveal.css"                >
+	<link rel="stylesheet" href="css/theme/moon.css" id="theme" >
+	<link rel="stylesheet" href="css/main.css"                  >
 
-		<script src="js/jquery.js"       defer></script>
-		<script src="lib/js/head.min.js" defer></script>
-		<script src="js/snap.js"         defer></script>
-		<script src="js/reveal.js"       defer></script>
-		<script src="js/tree.js"         defer></script>
-		<script src="js/main.js"         defer></script>
+	<script src="js/jquery.js"       defer></script>
+	<script src="lib/js/head.min.js" defer></script>
+	<script src="js/snap.js"         defer></script>
+	<script src="js/reveal.js"       defer></script>
+	<script src="js/tree.js"         defer></script>
+	<script src="js/odt.js"          defer></script>
+	<script src="js/main.js"         defer></script>
+</head>
 
-	</head>
+<body><div class="reveal">
 
-	<body>
+<!-- Slides setup -->
+	<div id="header" >
+		 <div id="slide-title">Hello</div>
+	</div>
+	<div id="footer">
+		<div id="footer-left">
+	  		<img src="img/logo.jpeg">
+	  	</div>
 
-		<div class="reveal">
+		<div id="footer-right">
+		  	<div id="autor"> Hips | Pedro Pupo Sá da Costa </div>
+		</div>
+	</div>
+<!-- -->
 
-			<div id="header" >
-				 <div id="slide-title">Hello</div>
-			</div>
-			<div id="footer">
-				<div id="footer-left">
-			  		<img src="img/logo.jpeg">
-			  	</div>
-
-				<div id="footer-right">
-				  	<div id="autor"> Hips | Pedro Pupo Sá da Costa </div>
-				</div>
-			</div>
-
-			<div class="slides">
+<div class="slides">
 
 <!-- TITLE SLIDE -->
 
@@ -82,19 +82,14 @@
 			<h3> Motivation                   </h3>
 			<h3> One Dimensional Turbulance   </h3>
 			<h3> The X-LES Formulation        </h3>
-
-			<h3> Hierarchical parcel swapping </h3>
+			<h3> Hierarchical Parcel Swapping </h3>
 			<h3> First Results                </h3>
 			<h3> Discussion                   </h3>
 		</ul>
 	</section>
 <!-- -->
 
-<!-- BEGINING OF ODT REVISION -->
-
-	<!--<section>
-		<h1>Motivation/h1>
-	</section> -->
+<!-- Motivation -->
 	<section title="Motivation">
 		<ul>
 			<li>
@@ -107,7 +102,9 @@
 			</li>
 		</ul>
 	</section>
+<!-- -->
 
+<!-- One Dimensional Turbulance-->
 	<section>
 		<h1>One Dimensional Turbulance</h1>
 	</section>
@@ -125,7 +122,14 @@
 		<img src="img/tripletMap.png" >
 	</section>
 
+	<section title="ODT: Triplet Map">
+		<svg id="odt" width="640" height="640" > </svg>
+	</section>
 
+
+<!-- -->
+
+<!-- The X-LES Formulation -->
 	<section>
 		<h1>The X-LES Formulation</h1>
 	</section>
@@ -174,102 +178,50 @@
 		\end{gather}\]
 		</div>
 	</section>
-
-
-
-	<section title="ODT: Over Sampling Procedure">
-		\[\begin{gather}
-			\left( \frac{l}{\tau} \right)^2 \sim  U^2_{x,k}
-			+ U^2_{y,k} + U^2_{z,k} - Z\frac{\nu^2}{l^2} \\
-
-			\lambda(l,l_0,t) = \frac{C}{l^2 \tau(l,y,t)} \\
-
- 			if \quad \frac{\lambda(l,l_0,t)}{F(l)G(l_0) R_T} > PP_{RNG}
- 			  \Rightarrow \mbox{Implement eddy!} \\
-
-		\end{gather}\]
-	</section>
-
-	<section title="ODT: Algorithm">
-		<img src="img/algorithm.png">
-	</section>
 <!-- -->
 
-<!-- BEGINIING OF HIPS INTRODUCTION -->
-
+<!-- Hierarchical Parcel Swapping -->
 	<section>
-		<h1> HiPS: An Extended Introduction </h1>
+		<h1> Hierarchical Parcel Swapping</h1>
 	</section>
 
-	<section title="HiPS: Channel flow">
-
+	<section title="Hierarchical Parcel Swapping">
 		<img src="img/channel.png" style="margin-bottom: 5%">
-
 		\[\begin{gather}
 			\frac{\delta U_i}{\delta t} = ME - EE - \phi
 		\end{gather}\]
 	</section>
 
-	<section title="HiPS: Swap & Mix">
-		<svg id="treeOne" width="960" height="640"> </svg>
+	<section title="Hierarchical Parcel Swapping" id="channelAnimation">
+		<div style="display: inline-block; width: 310px; vertical-align:top;" >
+			Eddy Event
+			<svg id="treeEE" width="250" height="250" viewBox="0 0 800 800"> </svg>
+			Mixing Event
+			<svg id="treeME" width="250" height="250" viewBox="0 0 800 800"> </svg>
+		</div>
+		<div style="display: inline-block; width: 640px;" >
+			<svg id="treeTwo" width="640" height="640" > </svg>
+		</div>
 	</section>
 
-	<section title="HiPS: Swap & Mix">
-	   	<img alt="image here" src="img/gif.gif" style="height: 500px;">
-	</section>
-
-	<section title="HiPS: Channel Flow">
-		<img src="img/channel.png" style="margin-bottom: 5%">
-
-		\[\begin{gather}
-			\frac{\delta U_i}{\delta t} = ME - EE - \phi
-		\end{gather}\]
-	</section>
-
-	<section title="HiPS: Channel Flow" id="channelAnimation">
-		<svg id="treeTwo" width="960" height="640"> </svg>
+	<section title="Hierarchical Parcel Swapping" id="channelAnimation">
+		<div style="display: inline-block; width: 310px; vertical-align:top;" >
+			Eddy Event
+			<svg id="treeEE" width="250" height="250" viewBox="0 0 800 800"> </svg>
+			Mixing Event
+			<svg id="treeME" width="250" height="250" viewBox="0 0 800 800"> </svg>
+		</div>
+		<div style="display: inline-block; width: 640px;" >
+			<svg id="treeTwo" width="640" height="640" > </svg>
+		</div>
 	</section>
 
 	<section title="HiPS: Channel Flow">
 	   	<img alt="image here" src="img/channel.gif" style="height: 500px;">
 	</section>
-
-	<section >
-
-		<section title="HiPS: ODT Sampling Procedure">
-			\[\begin{gather}
-				U_{i,k} = \frac{1}{l^2} \int U_i (f(y),t) K(y) dy \\
-
-				\tau = \frac{l}{\sqrt[]{ U^2_{x,k} + U^2_{y,k}
-					 + U^2_{z,k} }} \\
-
-				\lambda (i,t) = \frac{C}{ \tau l^2  } \\
-
-				\mbox{if}  \quad \frac{\lambda (i,t)}{R_T} > PP_{RNG}
-				           \Rightarrow \mbox{Implement eddy!}
-
-			\end{gather}\]
-		</section >
-		<section title="ODT: Sampling Procedure" >
-			\[\begin{gather}
-
-				U_{i,k} = \frac{1}{l^2} \int U_i (f(y),t) K(y) dy \\
-
-				\tau = \frac{l}{\sqrt[]{ U^2_{x,k} + U^2_{y,k}
-					 + U^2_{z,k} - Z\frac{\nu^2}{l^2} }} \\
-
-				\lambda (l,l_0,t) = \frac{C}{l^2 \tau } \\
-
-				\mbox{if}  \quad \frac{\lambda (l,l_0,t)}{ F(l) G(l_0) R_T}
-					> PP_{RNG} \Rightarrow \mbox{Implement eddy!}
-
-			\end{gather}\]
-		</section>
-
-	</section>
+<!-- -->
 
 <!-- HIPS RESULTS -->
-
 	<section>
 		<h1> HiPS: First Results </h1>
 	</section>
@@ -513,10 +465,8 @@
 	</section>
 <!-- -->
 
-			</div>
+</div> <!-- Close slides -->
 
-		</div>
-
-	</body>
+</div> </body>
 
 </html>

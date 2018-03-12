@@ -5,11 +5,12 @@ var makeTree = function(id,values){
     var number_of_levels  = Math.log( values.length ) / Math.log(2);
     var domain            = [];
     var height            = 640;
-    var width             = 960;
+    var width             = 640;
     var clickedNode       = null;
     var clickedGP         = null;
     var nodecollection    = [];
     var setinterval       = null;
+    var setinterval2      = null;
 
     var dadnode = {
         x        : width  / (number_of_levels + 2),
@@ -75,7 +76,7 @@ var makeTree = function(id,values){
                 .appendTo( node.group );
 
             // Draw nodes recursively and append to group
-            printTree(  node.left ).appendTo( node.group );
+            printTree( node.left ).appendTo( node.group );
             printTree( node.right ).appendTo( node.group );
 
         } else {
@@ -252,19 +253,22 @@ var makeTree = function(id,values){
         },
         applyBC: function(){
             applyBc();
+            return this;
         },
-        randomEddy: function(){
+        randomEddy: function(rng1, rng2, rng3 ){
 
             resetSelectionProcedure();
 
-            var rng1 = Math.floor( Math.random() * nodecollection.length );
-            var rng2 = Math.floor(Math.random() * 1);
-            var rng3 = Math.floor(Math.random() * 1);
+
+            rng1 = (typeof rng1 !== 'undefined') ? rng1 : Math.floor(Math.random() * nodecollection.length );
+            rng2 = (typeof rng2 !== 'undefined') ? rng2 : Math.floor(Math.random() * 1);
+            rng3 = (typeof rng3 !== 'undefined') ? rng3 : Math.floor(Math.random() * 1);
 
             if(    nodecollection[rng1].left == null
                 || nodecollection[rng1].left.left == null ){
                 return this.randomEddy();
             }
+            console.log( rng1 );
             nodeClicked( nodecollection[rng1] );
             if( rng2 == 0 ){ nodeClicked( nodecollection[rng1].left.left   ); }
             else           { nodeClicked( nodecollection[rng1].left.right  ); }
@@ -274,13 +278,26 @@ var makeTree = function(id,values){
         play: function(){
             if( setinterval != null ){
                 clearInterval(setinterval);
-                setinterval = null;
+                setinterval  = null;
+                setinterval2 = null;
                 return;
             }
+            var tree = this;
             setinterval = window.setInterval(function () {
-                tree2.randomEddy();
+                tree.randomEddy();
+                if( domain[         0         ].node.width.baseVal.value != 1 ||
+                    domain[ domain.length - 1 ].node.width.baseVal.value != 1 ){
+                    applyBc();
+                }
             }, 1150);
-            return;
+            setinterval2 = window.setInterval(function () {
+                tree.advanceTime(0.1);
+            }, 10000);
+            return this;
+
+        },
+        delete: function(){
+            return snap.clear();
         }
     }
 }

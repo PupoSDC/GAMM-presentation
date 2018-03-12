@@ -1,8 +1,23 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Create tree animations //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+var treeEE = makeTree("treeEE",[0,0,0,0,1,1,1,1] );
+var treeME = makeTree("treeME",[0,0,1,1,1,1,1,1] );
+var odt    = makeODT("odt",[0.05,0.1,0.2,0.4,0.5,0.5,0.5,0.5,0.5,0.5,0.5,
+	0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.4,0.2,0.1,
+	0.05]);
 
-var tree1 = makeTree("treeOne",[0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1] );
+//var treeEE_controller = window.setInterval(function () {
+//	treeEE.randomEddy(14,0,1);
+//	setTimeout(function() { treeEE.randomEddy(14,0,0); }, 1500);
+//}, 3000)
+//
+//var treeME_controller = window.setInterval(function () {
+//	treeME.delete()
+//	treeME = makeTree("treeME",[0,0,1,1,1,1,1,1] );
+//	setTimeout(function() { treeME.randomEddy(6,0,1); }, 1000);
+//}, 3000);
+
 
 var tree2 = makeTree("treeTwo",[0,0.05,0.1,0.2,0.4,0.5,0.5,0.5,0.5,0.5,0.5,0.5,
 	0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.4,0.2,0.1,
