@@ -3,17 +3,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 var treeEE = makeTree("treeEE",[0,0,0,0,1,1,1,1] );
 var treeME = makeTree("treeME",[0,0,1,1,1,1,1,1] );
-//var treeEE_controller = window.setInterval(function () {
-//	treeEE.randomEddy(14,0,1);
-//	setTimeout(function() { treeEE.randomEddy(14,0,0); }, 1500);
-//}, 3000)
-//
-//var treeME_controller = window.setInterval(function () {
-//	treeME.delete()
-//	treeME = makeTree("treeME",[0,0,1,1,1,1,1,1] );
-//	setTimeout(function() { treeME.randomEddy(6,0,1); }, 1000);
-//}, 3000);
-
 
 var tree2 = makeTree("treeTwo",[0,0.05,0.1,0.2,0.4,0.5,0.5,0.5,0.5,0.5,0.5,0.5,
 	0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.4,0.2,0.1,
@@ -49,13 +38,16 @@ Reveal.initialize({
 	    	tree2.play();
 	    },
 	    65: function(){ // a
-	    	tree2.applyBC();
+	    	treeEE.randomEddy(14,0,1);
 	    },
 	    83: function() { // s
-	    	tree2.randomEddy();
+	    	treeME.randomEddy(6,0,1);
 	    },
 	    68: function(){ // d
-	    	tree2.advanceTime(0.1);
+			treeME.delete();
+			treeEE.delete();
+			treeME = makeTree("treeME",[0,0,1,1,1,1,1,1] );
+			treeEE = makeTree("treeEE",[0,0,0,0,1,1,1,1] );
 	    },
 
 	}
@@ -104,4 +96,7 @@ function toggleHeaderAndFooter(){
 		$('.progress').show();
 	}
 }
+
+//Reveal.configure({ pdfMaxPagesPerSlide: 1 });
+
 
