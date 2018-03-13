@@ -3,10 +3,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 var treeEE = makeTree("treeEE",[0,0,0,0,1,1,1,1] );
 var treeME = makeTree("treeME",[0,0,1,1,1,1,1,1] );
-var odt    = makeODT("odt",[0.05,0.1,0.2,0.4,0.5,0.5,0.5,0.5,0.5,0.5,0.5,
-	0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.4,0.2,0.1,
-	0.05]);
-
 //var treeEE_controller = window.setInterval(function () {
 //	treeEE.randomEddy(14,0,1);
 //	setTimeout(function() { treeEE.randomEddy(14,0,0); }, 1500);
@@ -96,7 +92,7 @@ function today(){
 function toggleHeaderAndFooter(){
 	var index = Reveal.getIndices().h;
 	var over  = Reveal.isOverview();
-	if( index == 0 || index == Reveal.getTotalSlides() - 1 || over ){
+	if( index == 0 || over ){
 		$('#header').hide();
 		$('#footer').hide();
 		$('.progress').hide();
