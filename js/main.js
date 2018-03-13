@@ -35,7 +35,8 @@ Reveal.initialize({
 	margin: 0.2,
 
 	math: {
-		config: 'TeX-AMS_HTML-full',
+		mathjax: 'plugin/math/mathjax/MathJax.js',
+		config:  'TeX-AMS_HTML-full',
 		showMathMenu: true
 	},
 
