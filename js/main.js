@@ -17,7 +17,6 @@ Reveal.initialize({
 	progress: true,
 	history:  true,
 	center:   true,
-
 	transition: 'none', // none/fade/slide/convex/concave/zoom
 
 	// Factor of the display size that should remain empty around the content
@@ -89,12 +88,15 @@ function toggleHeaderAndFooter(){
 		$('#header').hide();
 		$('#footer').hide();
 		$('.progress').hide();
+		$('.slide-number').hide();
 	} else {
 		$('#header').show();
 		$('#slide-title').html( Reveal.getCurrentSlide().title );
 		$('#footer').show();
 		$('.progress').show();
+		$('.slide-number').show();
 	}
+	$('#page_number').html( Reveal.getIndices().h + 1 );
 }
 
 //Reveal.configure({ pdfMaxPagesPerSlide: 1 });

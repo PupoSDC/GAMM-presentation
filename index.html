@@ -41,7 +41,10 @@
 	  	</div>
 
 		<div id="footer-right">
-		  	<div id="autor"> Hips | Pedro Pupo Sá da Costa </div>
+		  	<div id="autor">
+		  		Pedro Pupo Sá da Costa |
+		  		<span id="page_number">0</span>
+		  	</div>
 		</div>
 	</div>
 <!-- -->
@@ -77,8 +80,8 @@
 <!-- AGEMDA -->
 	<section title="Outline">
 		<ul>
-			<h3> Objectives                   </h3>
-			<h3> One Dimensional Turbulance   </h3>
+			<h3> Motivation                   </h3>
+			<h3> One Dimensional Turbulence   </h3>
 			<h3> Hierarchical Parcel Swapping </h3>
 			<h3> Future Work                  </h3>
 			<h3> Discussion                   </h3>
@@ -87,7 +90,7 @@
 <!-- -->
 
 <!-- Motivation -->
-	<section title="Objectives">
+	<section title="Motivation">
 		<ul>
 			<li  style="margin-bottom: 5%">
 				Generalize the XLES formulation to allow an implementation of
@@ -98,14 +101,24 @@
 				overall performance or provide application specific advantages.
 			</li>
 		</ul>
+
+
+		DNS - Solves Large and Small scales in all directions.
+
+		LES - Solves Large scales, models small scales in all directions.
+
+		ODT - Solves Large and Small scales in only one direction.
+
+		X-LES - Solves Large and Small scales in
+
 	</section>
 <!-- -->
 
-<!-- One Dimensional Turbulance -->
+<!-- One Dimensional Turbulence -->
 	<section>
-		<h1>One Dimensional Turbulance</h1>
+		<h1>One Dimensional Turbulence</h1>
 	</section>
-	<section title="One Dimensional Turbulance">
+	<section title="One Dimensional Turbulence">
 		<img src="img/channel.png" style="margin-bottom: 5%">
 
 		\[\begin{gather}
@@ -115,7 +128,7 @@
 		\end{gather}\]
 	</section>
 
-	<section title="One Dimensional Turbulance">
+	<section title="One Dimensional Turbulence">
 		<p style="margin-bottom: 5%">Eddy Event </p>
 		<img src="img/tripletMap.png"  style="width: 70%" >
 	</section>
@@ -354,8 +367,8 @@
 	</section>
 
 	<section title="References">
-		<ul >
-		1. <a  href="https://www.researchgate.net/profile/Alan_Kerstein/
+		<ul id="references" >
+		<a  href="https://www.researchgate.net/profile/Alan_Kerstein/
 		publication/257604387_Hierarchical_Parcel-Swapping_
 		Representation_of_Turbulent_Mixing_Part_1_Formulation_and_Scaling_
 		Properties/links/0deec53ab3113c693d000000/Hierarchical-Parcel-
@@ -364,9 +377,8 @@
 		Kerstein, Alan. "Hierarchical Parcel-Swapping Representation of
 		Turbulent Mixing. Part 1. Formulation and Scaling Properties."
 		Journal of Statistical Physics 153.1 (2013).
-		</a> <br>
-
-		2. <a href="https://www.researchgate.net/profile/Alan_Kerstein/
+		</a>
+		<a href="https://www.researchgate.net/profile/Alan_Kerstein/
 		publication/278113084_Hierarchical_parcel-swapping_representation_of_
 		turbulent_mixing_Part_2_Application_to_channel_flow/links/
 		56ce285d08aeb52500c36ba0/Hierarchical-parcel-swapping-representation-of-
@@ -374,10 +386,11 @@
 		Kerstein, Alan R. "Hierarchical parcel-swapping representation of
 		turbulent mixing. Part 2. Application to channel flow." Journal of
 		Fluid Mechanics 750 (2014): 421-463.
-		</a> <br>
-
-		3. <a href="https://aip.scitation.org/doi/abs/10.1063/1.3696304">
-		Lenaers, Peter, et al. "Rare backflow and extreme wall-normal velocity fluctuations in near-wall turbulence." Physics of fluids 24.3 (2012): 035110.
+		</a>
+		<a href="https://aip.scitation.org/doi/abs/10.1063/1.3696304">
+		Lenaers, Peter, et al. "Rare backflow and extreme wall-normal velocity
+		fluctuations in near-wall turbulence." Physics of fluids 24.3 (2012):
+		035110.
 		</a>
 		</ul>
 	</section>
