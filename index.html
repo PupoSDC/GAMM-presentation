@@ -135,21 +135,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="font-weight: bold; text-align: center"> RANS </td>
-                    <td style="font-weight: bold; text-align: center">
-                        <span class="check">  &#10003;</span>
-                    </td>
-                    <td style="font-weight: bold; text-align: center">
-                        <span class="cross">  &#10007;</span>
-                    </td>
-                    <td style="font-weight: bold; text-align: center">
-                        <span class="check">  &#10003;</span>
-                    </td>
-                    <td style="font-weight: bold; text-align: center">
-                        <span class="check">  €€</span>
-                    </td>
-                </tr>
-                <tr>
                     <td style="font-weight: bold; text-align: center"> ODT </td>
                     <td style="font-weight: bold; text-align: center">
                         <span class="check">  &#10003;</span>
@@ -195,11 +180,11 @@
     </section>
 
     <section title="One Dimensional Turbulence: Stochastic Eddy Events">
-        <img src="img/schematic.png"  style="width: 100%" >
+        <img src="img/schematic.png"  style="width: 90%" >
     </section>
-
 <!-- -->
 
+<!-- X-LES -->
     <section title="X-LES">
         <img src="img/ODTLES.png" style="margin-bottom: 5%">
     </section>
@@ -211,16 +196,16 @@
         </p>
 
         <div style= "font-size: 52%; padding-bottom: 0.5em;">
-        \[\begin{gather}
-          \frac{ \delta u_{k,i} }{ \delta t } =
-               \nu\frac{ \delta^2 u_{k,i}}{ \delta x_k^2}
-             + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
-             + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
-             - \frac{ \delta ( u_{k,k} u_{k,i} ) }{ \delta x_k }
-             - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
-             - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
-             - \frac{1}{\rho} \frac{\delta p}{\delta x_i }
-        \end{gather}\]
+            \[\begin{gather}
+              \frac{ \delta u_{k,i} }{ \delta t } =
+                   \nu\frac{ \delta^2 u_{k,i}}{ \delta x_k^2}
+                 + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
+                 + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
+                 - \frac{ \delta ( u_{k,k} u_{k,i} ) }{ \delta x_k }
+                 - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
+                 - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
+                 - \frac{1}{\rho} \frac{\delta p}{\delta x_i }
+            \end{gather}\]
         </div>
 
         <p style="padding-bottom: 0.5em;">
@@ -247,6 +232,7 @@
         \end{gather}\]
         </div>
     </section>
+<!-- -->
 
 <!-- Hierarchical Parcel Swapping -->
     <section>
@@ -291,7 +277,7 @@
     </section>
 <!-- -->
 
-<!-- The X-LES Formulation -->
+<!-- Future Work -->
     <section>
         <h1>Future Work</h1>
     </section>
@@ -396,11 +382,7 @@
                 U^{t+1} = ME( U^t, \nu, \Delta x )
             \end{gather}\]
         </p>
-
     </section>
-
-
-<!-- -->
 
     <section title="Future work: HiPS-LES ">
         <p style="padding-bottom: 0.5em;">
@@ -523,7 +505,6 @@
 
         </ul>
     </section>
-
 <!-- -->
 
 </div> <!-- Close slides -->
