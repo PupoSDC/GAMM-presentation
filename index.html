@@ -2,418 +2,527 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 
-	<title>HIPS</title>
+    <title>HIPS</title>
 
-	<meta name="description" content="HiPS">
-	<meta name="author" content="Pedro Sa da Costa">
+    <meta name="description" content="HiPS">
+    <meta name="author" content="Pedro Sa da Costa">
 
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style"
-		  content="black-translucent"                  >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"                  >
 
-	<meta name="viewport" content="width=device-width,
-				initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<link rel="stylesheet" href="css/reveal.css"                >
-	<link rel="stylesheet" href="css/theme/moon.css" id="theme" >
-	<link rel="stylesheet" href="css/main.css"                  >
+    <link rel="stylesheet" href="css/reveal.css"                >
+    <link rel="stylesheet" href="css/theme/moon.css"            >
+    <link rel="stylesheet" href="css/main.css"                  >
 
-	<script src="js/jquery.js"       defer></script>
-	<script src="lib/js/head.min.js" defer></script>
-	<script src="js/snap.js"         defer></script>
-	<script src="js/reveal.js"       defer></script>
-	<script src="js/tree.js"         defer></script>
-	<script src="js/odt.js"          defer></script>
-	<script src="js/main.js"         defer></script>
+    <script src="js/jquery.js"       defer></script>
+    <script src="lib/js/head.min.js" defer></script>
+    <script src="js/snap.js"         defer></script>
+    <script src="js/reveal.js"       defer></script>
+    <script src="js/tree.js"         defer></script>
+    <script src="js/odt.js"          defer></script>
+    <script src="js/main.js"         defer></script>
 </head>
 
 <body><div class="reveal">
 
 <!-- Slides setup -->
-	<div id="header" >
-		 <div id="slide-title">Hello</div>
-	</div>
-	<div id="footer">
-		<div id="footer-left">
-	  		<img src="img/logo.jpeg">
-	  	</div>
+    <div id="header" >
+         <div id="slide-title">Hello</div>
+    </div>
+    <div id="footer">
+        <div id="footer-left">
+            <img src="img/logo.jpeg">
+        </div>
 
-		<div id="footer-right">
-		  	<div id="autor">
-		  		Pedro Pupo Sá da Costa |
-		  		<span id="page_number">0</span>
-		  	</div>
-		</div>
-	</div>
+        <div id="footer-right">
+            <div id="autor">
+                Pedro Pupo Sá da Costa |
+                <span id="page_number">0</span>
+            </div>
+        </div>
+    </div>
 <!-- -->
 
 <div class="slides">
 
 <!-- TITLE SLIDE -->
-	<section>
-		<img src="img/logo.jpeg" id="cover-image">
-		<hr id="cover-rule">
-		<h3>
-			Towards a hybrid turbulent mixing model based on hierarchical
-			parcel-swapping and <br> one-dimensional turbulence
-		</h3>
-		<p>
-			Pedro Pupo Sá da Costa
-			</br>
-			<small>
-				Heiko Schmidt
-			</small>
-			</br>
-			<small>
-				Lehrstuhl Numerische Strömungs- und Gasdynamik
-			</small>
-			</br>
-			<small>
-				<span class="datetoday"></span>
-			</small>
-		</p>
-	</section>
+    <section>
+        <img src="img/logo.jpeg" id="cover-image">
+        <hr id="cover-rule">
+        <h3>
+            Towards a hybrid turbulent mixing model based on hierarchical
+            parcel-swapping and <br> one-dimensional turbulence
+        </h3>
+        <p>
+            Pedro Pupo Sá da Costa
+            </br>
+            <small>
+                Heiko Schmidt
+            </small>
+            </br>
+            <small>
+                Lehrstuhl Numerische Strömungs- und Gasdynamik
+            </small>
+            </br>
+            <small>
+                <span class="datetoday"></span>
+            </small>
+        </p>
+    </section>
 <!-- -->
 
 <!-- AGEMDA -->
-	<section title="Outline">
-		<ul>
-			<h3> Motivation                   </h3>
-			<h3> One Dimensional Turbulence   </h3>
-			<h3> Hierarchical Parcel Swapping </h3>
-			<h3> X-LES                        </h3>
-			<h3> Discussion                   </h3>
-		</ul>
-	</section>
-<!-- -->
-
-<!-- Motivation -->
-	<section title="Motivation">
-	<!--
-		<ul>
-			<li  style="margin-bottom: 5%">
-				Generalize the XLES formulation to allow an implementation of
-				ODT as a sub-grid model in external CFD codes.
-			</li>
-			<li  style="margin-bottom: 5%">
-				Develop alternative ODT models within this framework to improve
-				overall performance or provide application specific advantages.
-			</li>
-		</ul>
-	 -->
-
-		<strong> DNS </strong> Solves Large and Small scales <br/>
-
-		<strong> LES </strong> Solves Large scales, models small scales <br/>
-
-		<strong> ODT </strong> Solves Large and Small scales in only one direction. <br/>
-
-	</section>
+    <section title="Outline">
+        <ul>
+            <h3> One Dimensional Turbulence   </h3>
+            <h3> X-LES                        </h3>
+            <h3> Hierarchical Parcel Swapping </h3>
+            <h3> Future work                  </h3>
+            <h3> Discussion                   </h3>
+        </ul>
+    </section>
 <!-- -->
 
 <!-- One Dimensional Turbulence -->
-	<section>
-		<h1>One Dimensional Turbulence</h1>
-	</section>
-	<section title="One Dimensional Turbulence">
-		<img src="img/channel.png" style="margin-bottom: 5%">
 
-		\[\begin{gather}
-			\frac{\delta U_i}{\delta t}
-			= \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi
-			\label{eq:NavierStokesODT2}
-		\end{gather}\]
-	</section>
+    <section title="One Dimensional Turbulence: Motivation">
 
-	<section title="One Dimensional Turbulence">
-		<p style="margin-bottom: 5%">Eddy Event </p>
-		<img src="img/tripletMap.png"  style="width: 70%" >
-	</section>
+            <table style="font-size: 0.8em; text-align: right;">
+            <thead >
+                <tr>
+                    <th> Model          </th>
+                    <th> Large Scales   </th>
+                    <th> Small Scales   </th>
+                    <th> All directions </th>
+                    <th> Cost           </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> DNS </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  &#10003;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  &#10003;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  &#10003;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="cross">  €€€€</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> LES </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  &#10003;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="cross">  &#10007;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  &#10003;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  €€€</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> RANS </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  &#10003;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="cross">  &#10007;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  &#10003;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  €€</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> ODT </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  &#10003;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  &#10003;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="cross">  &#10007;</span>
+                    </td>
+                    <td style="font-weight: bold; text-align: center">
+                        <span class="check">  €</span>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+    </section>
+
+    <section title="One Dimensional Turbulence: Channel flow">
+        <img src="img/channel.png" style="margin-bottom: 5%">
+
+        \[\begin{gather}
+            \frac{\delta U_i}{\delta t}
+            = \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi
+            \label{eq:NavierStokesODT2}
+        \end{gather}\]
+    </section>
+
+    <section title="One Dimensional Turbulence: Eddy Event">
+        <div style= "font-size: 0.6em; padding-bottom: 1em;">
+            \[\begin{gather} f(y) = y_0 + \left\{
+                \begin{array}{ll}
+                    3(y - y_0),   & \mbox{if} \quad  \phantom{y_0 +} y_0 \leq y \leq y_0 + \frac{1}{3}l\\
+                    2l-3(y-y_0),  & \mbox{if} \quad  y_0 + \frac{1}{3}l \leq y \leq y_0 + \frac{2}{3}l\\
+                    3(y-y_0) -2l, & \mbox{if} \quad  y_0 + \frac{2}{3}l \leq y \leq l\\
+                    (y-y_0),      & otherwise
+                \end{array}\right.
+            \end{gather}\]
+        </div>
+        <div>
+            <img src="img/tripletMap.png"  style="width: 60%" >
+        </div>
+    </section>
+
+    <section title="One Dimensional Turbulence: Stochastic Eddy Events">
+        <img src="img/schematic.png"  style="width: 100%" >
+    </section>
+
 <!-- -->
 
+    <section title="X-LES">
+        <img src="img/ODTLES.png" style="margin-bottom: 5%">
+    </section>
+
+    <section title="X-LES">
+
+        <p style="padding-bottom: 0.5em;">
+            Navier Stokes Equations:
+        </p>
+
+        <div style= "font-size: 52%; padding-bottom: 0.5em;">
+        \[\begin{gather}
+          \frac{ \delta u_{k,i} }{ \delta t } =
+               \nu\frac{ \delta^2 u_{k,i}}{ \delta x_k^2}
+             + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
+             + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
+             - \frac{ \delta ( u_{k,k} u_{k,i} ) }{ \delta x_k }
+             - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
+             - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
+             - \frac{1}{\rho} \frac{\delta p}{\delta x_i }
+        \end{gather}\]
+        </div>
+
+        <p style="padding-bottom: 0.5em;">
+            ODT-LES Equations:
+        </p>
+
+
+        <div style= "font-size: 52%; padding-bottom: 0.5em;">
+        \[\begin{gather}
+          \frac{ \delta u_{k,i} }{ \delta t } =
+              \underbrace{
+                  \nu\frac{ \delta^2 u_{k,j}}{ \delta x_k^2}
+                - \frac{ \delta ( U_{k,k} u_{k,i} ) }
+                       { \delta x_{k\phantom{j}}^\phantom{2} }
+                + EE
+                - \frac{1}{\rho} \frac{\delta P}{\delta x_i }
+              }_{ \text{Inline: ODT advancement} }
+            + \underbrace{
+                    \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
+                  + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
+                  - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
+                  - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
+            }_{ \text{Offline: Explicit advancement} }
+        \end{gather}\]
+        </div>
+    </section>
+
 <!-- Hierarchical Parcel Swapping -->
-	<section>
-		<h1> Hierarchical Parcel Swapping</h1>
-	</section>
+    <section>
+        <h1> Hierarchical Parcel Swapping</h1>
+    </section>
 
-	<section title="Hierarchical Parcel Swapping">
-		<img src="img/channel.png" style="margin-bottom: 5%">
-		\[\begin{gather}
-			\frac{\delta U_i}{\delta t} = ME - EE - \phi
-		\end{gather}\]
-	</section>
+    <section title="Hierarchical Parcel Swapping">
+        <img src="img/channel.png" style="margin-bottom: 5%">
+        \[\begin{gather}
+            \frac{\delta U_i}{\delta t} = ME - EE - \phi
+        \end{gather}\]
+    </section>
 
-	<section title="Hierarchical Parcel Swapping">
-		<div style="display: inline-block; width: 305px; vertical-align:top;" >
-			Eddy Event
-			<svg id="treeEE" width="250" height="250" viewBox="0 0 800 800"> </svg>
-			Mixing Event
-			<svg id="treeME" width="250" height="250" viewBox="0 0 800 800"> </svg>
-		</div>
-		<div style="display: inline-block; width: 640px;" >
-			<svg id="treeTwo" width="640" height="640" > </svg>
-		</div>
-	</section>
+    <section title="Hierarchical Parcel Swapping">
+        <div style="display: inline-block; width: 305px; vertical-align:top;" >
+            Eddy Event
+            <svg id="treeEE" width="250" height="250" viewBox="0 0 800 800"> </svg>
+            Mixing Event
+            <svg id="treeME" width="250" height="250" viewBox="0 0 800 800"> </svg>
+        </div>
+        <div style="display: inline-block; width: 640px;" >
+            <svg id="treeTwo" width="640" height="640" > </svg>
+        </div>
+    </section>
 
-	<section title="Hierarchical Parcel Swapping: Mean velocity profile">
-		<div style="width: 80%; text-align: center; display: block; margin: auto;" >
-			<img src="img/uresult.png">
-		</div>
-	</section>
+    <section title="Hierarchical Parcel Swapping: Mean velocity profile">
+        <div style="width: 80%; text-align: center; display: block; margin: auto;" >
+            <img src="img/uresult.png">
+        </div>
+    </section>
 
-	<section title="Hierarchical Parcel Swapping: Mean velocity profile">
-		<div style="width: 80%; text-align: center; display: block; margin: auto;" >
-			<img src="img/uyplusresult.png">
-		</div>
-	</section>
+    <section title="Hierarchical Parcel Swapping: Mean velocity profile">
+        <div style="width: 80%; text-align: center; display: block; margin: auto;" >
+            <img src="img/uyplusresult.png">
+        </div>
+    </section>
 
-	<section title="Hierarchical Parcel Swapping: PDF of wall normalized stress">
-		<div style="width: 80%; text-align: center; display: block; margin: auto;" >
-			<img src="img/pdfResult.png">
-		</div>
-	</section>
-
+    <section title="Hierarchical Parcel Swapping: PDF of wall normalized stress">
+        <div style="width: 80%; text-align: center; display: block; margin: auto;" >
+            <img src="img/pdfResult.png">
+        </div>
+    </section>
 <!-- -->
 
 <!-- The X-LES Formulation -->
-	<section>
-		<h1>Future Work</h1>
-	</section>
+    <section>
+        <h1>Future Work</h1>
+    </section>
 
-	<section title="Future work: Improving HiPS ">
+    <section title="Future work: Improving HiPS ">
 
-		<p style="padding-bottom: 0.3em;">
-			Hips Results are only a function of the number of levels in the
-			binary tree representation.
-		</p>
+        <p style="padding-bottom: 0.3em;">
+            Hips Results are only a function of the number of levels in the
+            binary tree representation.
+        </p>
 
-		<table style="font-size: 0.5em; text-align: right;">
-			<thead >
-				<tr>
-					<th> C/T    </th>
-					<th> 0.001  </th>
-					<th> 0.005  </th>
-					<th> 0.01 	</th>
-					<th> 0.05 	</th>
-					<th> 0.1 	</th>
-					<th> 0.5 	</th>
-					<th> 1 	    </th>
-					<th> 5 	    </th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td style="font-weight: bold; text-align: center"> 1 </td>
-					<td>  963 </td>
-					<td>  968 </td>
-					<td>  981 </td>
-					<td>  970 </td>
-					<td>  971 </td>
-					<td> 1006 </td>
-					<td>  962 </td>
-					<td>  972 </td>
-				</tr>
-				<tr>
-					<td style="font-weight: bold; text-align: center"> 2 </td>
-					<td>  976 </td>
-					<td> 1006 </td>
-					<td>  972 </td>
-					<td>  987 </td>
-					<td>  972 </td>
-					<td> 1012 </td>
-					<td>  944 </td>
-					<td>  984 </td>
-				</tr>
-				<tr>
-					<td style="font-weight: bold; text-align: center"> 3 </td>
-					<td> 985 </td>
-					<td>1014 </td>
-					<td> 974 </td>
-					<td> 950 </td>
-					<td> 968 </td>
-					<td> 973 </td>
-					<td> 934 </td>
-					<td> 956 </td>
-				</tr>
-				<tr>
-					<td style="font-weight: bold; text-align: center"> 4 </td>
-					<td> 960 </td>
-					<td> 984 </td>
-					<td> 974 </td>
-					<td> 965 </td>
-					<td> 970 </td>
-					<td> 947 </td>
-					<td> 950 </td>
-					<td> 954 </td>
-				</tr>
-				<tr>
-					<td style="font-weight: bold; text-align: center"> 5 </td>
-					<td> 965 </td>
-					<td> 962 </td>
-					<td> 976 </td>
-					<td> 976 </td>
-					<td> 968 </td>
-					<td> 965 </td>
-					<td> 969 </td>
-					<td> 972 </td>
-				</tr>
-				<tr>
-					<td style="font-weight: bold; text-align: center"> 6 </td>
-					<td> 981 </td>
-					<td> 966 </td>
-					<td> 961 </td>
-					<td> 956 </td>
-					<td> 961 </td>
-					<td> 974 </td>
-					<td> 970 </td>
-					<td> 967 </td>
-				</tr>
-			</tbody>
-		</table>
+        <table style="font-size: 0.5em; text-align: right;">
+            <thead >
+                <tr>
+                    <th> C/T    </th>
+                    <th> 0.001  </th>
+                    <th> 0.005  </th>
+                    <th> 0.01   </th>
+                    <th> 0.05   </th>
+                    <th> 0.1    </th>
+                    <th> 0.5    </th>
+                    <th> 1      </th>
+                    <th> 5      </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> 1 </td>
+                    <td>  963 </td>
+                    <td>  968 </td>
+                    <td>  981 </td>
+                    <td>  970 </td>
+                    <td>  971 </td>
+                    <td> 1006 </td>
+                    <td>  962 </td>
+                    <td>  972 </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> 2 </td>
+                    <td>  976 </td>
+                    <td> 1006 </td>
+                    <td>  972 </td>
+                    <td>  987 </td>
+                    <td>  972 </td>
+                    <td> 1012 </td>
+                    <td>  944 </td>
+                    <td>  984 </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> 3 </td>
+                    <td> 985 </td>
+                    <td>1014 </td>
+                    <td> 974 </td>
+                    <td> 950 </td>
+                    <td> 968 </td>
+                    <td> 973 </td>
+                    <td> 934 </td>
+                    <td> 956 </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> 4 </td>
+                    <td> 960 </td>
+                    <td> 984 </td>
+                    <td> 974 </td>
+                    <td> 965 </td>
+                    <td> 970 </td>
+                    <td> 947 </td>
+                    <td> 950 </td>
+                    <td> 954 </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> 5 </td>
+                    <td> 965 </td>
+                    <td> 962 </td>
+                    <td> 976 </td>
+                    <td> 976 </td>
+                    <td> 968 </td>
+                    <td> 965 </td>
+                    <td> 969 </td>
+                    <td> 972 </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; text-align: center"> 6 </td>
+                    <td> 981 </td>
+                    <td> 966 </td>
+                    <td> 961 </td>
+                    <td> 956 </td>
+                    <td> 961 </td>
+                    <td> 974 </td>
+                    <td> 970 </td>
+                    <td> 967 </td>
+                </tr>
+            </tbody>
+        </table>
 
-		<p style="padding-bottom: 0.3em;">
-			A new Mixing Event operator must consider diffusion in a more
-			physical way.
-		</p>
-		<p>
-			\[\begin{gather}
-				U^{t+1} = ME( U^t, \nu, \Delta x )
-			\end{gather}\]
-		</p>
+        <p style="padding-bottom: 0.3em;">
+            A new Mixing Event operator must consider diffusion in a more
+            physical way.
+        </p>
+        <p>
+            \[\begin{gather}
+                U^{t+1} = ME( U^t, \nu, \Delta x )
+            \end{gather}\]
+        </p>
 
-	</section>
-
-	<section title="Future work: HiPS as X-LES sub-grid model">
-		<img src="img/ODTLES.png" style="margin-bottom: 5%">
-	</section>
-
-	<section title="Future work: HiPS as X-LES sub-grid model">
-
-		<p style="padding-bottom: 0.5em;">
-			Navier Stokes Equations:
-		</p>
-
-		<div style= "font-size: 52%; padding-bottom: 0.5em;">
-		\[\begin{gather}
-		  \frac{ \delta u_{k,i} }{ \delta t } =
-		       \nu\frac{ \delta^2 u_{k,i}}{ \delta x_k^2}
-		     + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
-		     + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
-		     - \frac{ \delta ( u_{k,k} u_{k,i} ) }{ \delta x_k }
-		     - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
-		     - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
-		     - \frac{1}{\rho} \frac{\delta p}{\delta x_i }
-		\end{gather}\]
-		</div>
-
-		<p style="padding-bottom: 0.5em;">
-			Navier Stokes Equations with ODT model:
-		</p>
+    </section>
 
 
-		<div style= "font-size: 52%; padding-bottom: 0.5em;">
-		\[\begin{gather}
-		  \frac{ \delta u_{k,i} }{ \delta t } =
-		      \underbrace{
-		          \nu\frac{ \delta^2 u_{k,j}}{ \delta x_k^2}
-		        - \frac{ \delta ( U_{k,k} u_{k,i} ) }
-		               { \delta x_{k\phantom{j}}^\phantom{2} }
-		        + EE
-		        - \frac{1}{\rho} \frac{\delta P}{\delta x_i }
-		      }_{ \text{Inline: ODT advancement} }
-		    + \underbrace{
-		            \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
-		          + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
-		    	  - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
-		    	  - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
-		    }_{ \text{Offline: Explicit advancement} }
-		\end{gather}\]
-		</div>
-
-
-		<p style="padding-bottom: 0.5em;">
-			Navier Stokes Equations with HiPS model:
-		</p>
-
-
-		<div style= "display:inline-block; font-size: 52%">
-		\[\begin{gather}
-		  \frac{ \delta u_{k,i} }{ \delta t } =
-		      \underbrace{
-		          ME
-		        - \frac{ \delta ( U_{k,k} u_{k,i} ) }
-		               { \delta x_{k\phantom{j}}^\phantom{2} }
-		        + EE
-		        - \frac{1}{\rho} \frac{\delta P}{\delta x_{i} }
-		      }_{ \text{Inline: HiPS advancement} }
-		    + \underbrace{
-		            \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
-		          + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
-		    	  - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
-		    	  - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
-		    }_{ \text{Offline: Explicit advancement} }
-		\end{gather}\]
-		</div>
-	</section>
 <!-- -->
 
-<!-- END OF Presentation -->
+    <section title="Future work: HiPS-LES ">
+        <p style="padding-bottom: 0.5em;">
+            Navier Stokes Equations:
+        </p>
 
-	<section>
-	   	<h3> Discussion
-	</section>
+        <div style= "font-size: 52%; padding-bottom: 0.5em;">
+        \[\begin{gather}
+          \frac{ \delta u_{k,i} }{ \delta t } =
+               \nu\frac{ \delta^2 u_{k,i}}{ \delta x_k^2}
+             + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
+             + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
+             - \frac{ \delta ( u_{k,k} u_{k,i} ) }{ \delta x_k }
+             - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
+             - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
+             - \frac{1}{\rho} \frac{\delta p}{\delta x_i }
+        \end{gather}\]
+        </div>
 
-	<section title="References">
-		<ul id="references" >
+        <p style="padding-bottom: 0.5em;">
+            ODT-LES Equations:
+        </p>
 
-		<li><a  href="https://www.researchgate.net/profile/Alan_Kerstein/
-		publication/257604387_Hierarchical_Parcel-Swapping_
-		Representation_of_Turbulent_Mixing_Part_1_Formulation_and_Scaling_
-		Properties/links/0deec53ab3113c693d000000/Hierarchical-Parcel-
-		Swap</li>ping-Representation-of-Turbulent-Mixing-
-		Part-1-Formulation-and-Scaling-Properties.pdf">
-		KERSTEIN, A. (1999). One-dimensional turbulence: Model formulation and
-		application to homogeneous turbulence, shear flows, and buoyant
-		stratified flows. Journal of Fluid Mechanics, 392, 277-334.
-		doi:10.1017/S0022112099005376
-		</a></li>
 
-		<li><a  href="https://www.researchgate.net/profile/Alan_Kerstein/
-		publication/257604387_Hierarchical_Parcel-Swapping_
-		Representation_of_Turbulent_Mixing_Part_1_Formulation_and_Scaling_
-		Properties/links/0deec53ab3113c693d000000/Hierarchical-Parcel-
-		Swap</li>ping-Representation-of-Turbulent-Mixing-
-		Part-1-Formulation-and-Scaling-Properties.pdf">
-		Kerstein, Alan. "Hierarchical Parcel-Swapping Representation of
-		Turbulent Mixing. Part 1. Formulation and Scaling Properties."
-		Journal of Statistical Physics 153.1 (2013).
-		</a></li>
+        <div style= "font-size: 52%; padding-bottom: 0.5em;">
+        \[\begin{gather}
+          \frac{ \delta u_{k,i} }{ \delta t } =
+              \underbrace{
+                  \nu\frac{ \delta^2 u_{k,j}}{ \delta x_k^2}
+                - \frac{ \delta ( U_{k,k} u_{k,i} ) }
+                       { \delta x_{k\phantom{j}}^\phantom{2} }
+                + EE
+                - \frac{1}{\rho} \frac{\delta P}{\delta x_i }
+              }_{ \text{Inline: ODT advancement} }
+            + \underbrace{
+                    \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
+                  + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
+                  - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
+                  - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
+            }_{ \text{Offline: Explicit advancement} }
+        \end{gather}\]
+        </div>
 
-		<li><a href="https://www.researchgate.net/profile/Alan_Kerstein/
-		publication/278113084_Hierarchical_parcel-swapping_representation_of_
-		turbulent_mixing_Part_2_Application_to_channel_flow/links/
-		56ce285d08aeb52500c36ba0/Hierarchical-parcel-swapping-representation-of-
-		turb</li>ulent-mixing-Part-2-Application-to-channel-flow.pdf">
-		Kerstein, Alan R. "Hierarchical parcel-swapping representation of
-		turbulent mixing. Part 2. Application to channel flow." Journal of
-		Fluid Mechanics 750 (2014): 421-463.
-		</a></li>
 
-		<li><a href="https://aip.scitation.org/doi/abs/10.1063/1.4791606">
-		Schultz, Michael P., and Karen A. Flack. "Reynolds-number scaling of
-		turbulent channel flow." Physics of Fluids 25.2 (2013): 025104.
-		</a></li>
+        <p style="padding-bottom: 0.5em;">
+            HiPS-LES Equations.
+        </p>
 
-		<li><a href="https://aip.scitation.org/doi/abs/10.1063/1.3696304">
-		Lenaers, Peter, et al. "Rare backflow and extreme wall-normal velocity
-		fluctuations in near-wall turbulence." Physics of fluids 24.3 (2012):
-		035110.
-		</a></li>
+        <div style= "display:inline-block; font-size: 52%">
+        \[\begin{gather}
+          \frac{ \delta u_{k,i} }{ \delta t } =
+              \underbrace{
+                  ME
+                - \frac{ \delta ( U_{k,k} u_{k,i} ) }
+                       { \delta x_{k\phantom{j}}^\phantom{2} }
+                + EE
+                - \frac{1}{\rho} \frac{\delta P}{\delta x_{i} }
+              }_{ \text{Inline: HiPS advancement} }
+            + \underbrace{
+                    \nu\frac{ \delta^2 u_{k,i}}{ \delta x_i^2}
+                  + \nu\frac{ \delta^2 u_{k,i}}{ \delta x_j^2}
+                  - \frac{ \delta ( u_{k,i} u_{k,i} ) }{ \delta x_i }
+                  - \frac{ \delta ( u_{k,j} u_{k,i} ) }{ \delta x_j }
+            }_{ \text{Offline: Explicit advancement} }
+        \end{gather}\]
+        </div>
+    </section>
+        <!-- END OF Presentation -->
 
-		</ul>
-	</section>
+    <section>
+        <h3> Discussion
+    </section>
+
+    <section title="References">
+        <ul id="references" >
+
+        <li><a  href="https://www.researchgate.net/profile/Alan_Kerstein/
+        publication/257604387_Hierarchical_Parcel-Swapping_
+        Representation_of_Turbulent_Mixing_Part_1_Formulation_and_Scaling_
+        Properties/links/0deec53ab3113c693d000000/Hierarchical-Parcel-
+        Swap</li>ping-Representation-of-Turbulent-Mixing-
+        Part-1-Formulation-and-Scaling-Properties.pdf">
+        KERSTEIN, A. (1999). One-dimensional turbulence: Model formulation and
+        application to homogeneous turbulence, shear flows, and buoyant
+        stratified flows. Journal of Fluid Mechanics, 392, 277-334.
+        doi:10.1017/S0022112099005376
+        </a></li>
+
+        <li><a  href="https://www.researchgate.net/profile/Alan_Kerstein/
+        publication/257604387_Hierarchical_Parcel-Swapping_
+        Representation_of_Turbulent_Mixing_Part_1_Formulation_and_Scaling_
+        Properties/links/0deec53ab3113c693d000000/Hierarchical-Parcel-
+        Swap</li>ping-Representation-of-Turbulent-Mixing-
+        Part-1-Formulation-and-Scaling-Properties.pdf">
+        Kerstein, Alan. "Hierarchical Parcel-Swapping Representation of
+        Turbulent Mixing. Part 1. Formulation and Scaling Properties."
+        Journal of Statistical Physics 153.1 (2013).
+        </a></li>
+
+        <li><a href="https://www.researchgate.net/profile/Alan_Kerstein/
+        publication/278113084_Hierarchical_parcel-swapping_representation_of_
+        turbulent_mixing_Part_2_Application_to_channel_flow/links/
+        56ce285d08aeb52500c36ba0/Hierarchical-parcel-swapping-representation-of-
+        turb</li>ulent-mixing-Part-2-Application-to-channel-flow.pdf">
+        Kerstein, Alan R. "Hierarchical parcel-swapping representation of
+        turbulent mixing. Part 2. Application to channel flow." Journal of
+        Fluid Mechanics 750 (2014): 421-463.
+        </a></li>
+
+        <li><a href="https://aip.scitation.org/doi/abs/10.1063/1.4791606">
+        Schultz, Michael P., and Karen A. Flack. "Reynolds-number scaling of
+        turbulent channel flow." Physics of Fluids 25.2 (2013): 025104.
+        </a></li>
+
+        <li><a href="https://aip.scitation.org/doi/abs/10.1063/1.3696304">
+        Lenaers, Peter, et al. "Rare backflow and extreme wall-normal velocity
+        fluctuations in near-wall turbulence." Physics of fluids 24.3 (2012):
+        035110.
+        </a></li>
+
+        </ul>
+    </section>
 
 <!-- -->
 

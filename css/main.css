@@ -157,3 +157,11 @@ svg rect.animate{
   padding-bottom:      0.6em;
   list-style-type:     none
 }
+
+.check {
+  color:      #00e0b3;
+}
+
+.cross {
+  color:     #e04300;
+}
