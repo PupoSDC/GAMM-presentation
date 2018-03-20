@@ -160,7 +160,8 @@
 
         \[\begin{gather}
             \frac{\delta U_i}{\delta t}
-            = \nu \frac{\delta^2}{\delta x^2_j} U_i - EE - \phi
+            = \nu \frac{\delta^2}{\delta x^2_j} U_i - EE
+            - \frac{1}{\rho} \frac{\delta \bar{P}}{\delta x }
             \label{eq:NavierStokesODT2}
         \end{gather}\]
 
@@ -244,7 +245,8 @@
     <section title="Hierarchical Parcel Swapping">
         <img src="img/channel.png" style="margin-bottom: 5%">
         \[\begin{gather}
-            \frac{\delta U_i}{\delta t} = ME - EE - \phi
+            \frac{\delta U_i}{\delta t} = ME - EE
+            - \frac{1}{\rho} \frac{\delta \bar{P}}{\delta x }
         \end{gather}\]
 
          <p style="font-size: 0.5em; padding-top: 2em;">
@@ -277,7 +279,7 @@
     </section>
 
     <section title="Hierarchical Parcel Swapping: PDF of wall normalized stress">
-        <div style="width: 80%; text-align: center; display: block; margin: auto;" >
+        <div style="width: 85%; text-align: center; display: block; margin: auto;" >
             <img src="img/pdfResult.png">
         </div>
     </section>
